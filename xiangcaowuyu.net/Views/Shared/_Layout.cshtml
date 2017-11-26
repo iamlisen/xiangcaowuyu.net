@@ -1,9 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@using xiangcaowuyu.net.Public;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - xiangcaowuyu.net</title>
+    <title>
+        @if (ViewData["Title"] == null || ViewData["Title"].ToString() == "")
+        {
+            @ConfigManager.GetConfig("SysName");
+        }
+        else
+        {
+            @string.Format("{0} - {1}",ViewData["Title"],ConfigManager.GetConfig("SysName"));
+        }
+    </title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,13 +37,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">xiangcaowuyu.net</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">@ConfigManager.GetConfig("SysName")</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @*
+    <li><a asp-area="" asp-controller="Home" asp-action="Index">首页</a></li>
+    <li><a asp-area="" asp-controller="Home" asp-action="SkinCareMethod">护肤方法</a></li>
+    <li><a asp-area="" asp-controller="Home" asp-action="SkinCareProduct">护肤品</a></li>
+    <li><a asp-area="" asp-controller="Home" asp-action="NewProduct">新品发售</a></li>
+    <li><a asp-area="" asp-controller="Home" asp-action="Evaluating">护肤评测</a></li>
+                    *@
+                    @ViewData["Menus"]
                 </ul>
             </div>
         </div>

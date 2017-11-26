@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using xiangcaowuyu.net.Public;
+using Microsoft.EntityFrameworkCore;
+using xiangcaowuyu.net.Public.MenuHelper;
 
 namespace xiangcaowuyu.net
 {
@@ -22,6 +25,9 @@ namespace xiangcaowuyu.net
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            string sqlConnectionString = Configuration.GetSection("SqlServer").Value;
+            services.AddDbContext<SqlDbContext>(options=>options.UseSqlServer(sqlConnectionString));
+            services.AddScoped<IMenuHelper,MenuHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
