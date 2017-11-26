@@ -17,5 +17,7 @@ namespace xiangcaowuyu.net.Models
         public string KeyWord { get; set; }
         public string Description { get; set; }
         public int Sort { get; set; }
+        public string Controller { get; set; }
+        public string Action { get; set; }
     }
 }

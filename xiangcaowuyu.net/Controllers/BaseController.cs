@@ -19,7 +19,7 @@ namespace xiangcaowuyu.net.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-           ViewData["menus"] = menuHelper.GetList();
+            ViewData["menus"] = menuHelper.GetList();
             base.OnActionExecuting(context);
         }
     }

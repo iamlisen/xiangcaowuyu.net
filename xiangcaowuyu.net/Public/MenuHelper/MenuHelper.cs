@@ -18,7 +18,7 @@ namespace xiangcaowuyu.net.Public.MenuHelper
         }
         public List<Menu> GetList()
         {
-            return sqlDbContext.Menu.ToList<Menu>();
+            return sqlDbContext.Menu.ToList<Menu>().OrderBy(e=>e.Sort).ToList();
         }
     }
 }

@@ -12,7 +12,7 @@
         }
         else
         {
-            @string.Format("{0} - {1}",ViewData["Title"],ConfigManager.GetConfig("SysName"));
+            @string.Format("{0} - {1}", ViewData["Title"], ConfigManager.GetConfig("SysName"));
         }
     </title>
 
@@ -42,13 +42,21 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*
-    <li><a asp-area="" asp-controller="Home" asp-action="Index">首页</a></li>
-    <li><a asp-area="" asp-controller="Home" asp-action="SkinCareMethod">护肤方法</a></li>
-    <li><a asp-area="" asp-controller="Home" asp-action="SkinCareProduct">护肤品</a></li>
-    <li><a asp-area="" asp-controller="Home" asp-action="NewProduct">新品发售</a></li>
-    <li><a asp-area="" asp-controller="Home" asp-action="Evaluating">护肤评测</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">首页</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="SkinCareMethod">护肤方法</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="SkinCareProduct">护肤品</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="NewProduct">新品发售</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Evaluating">护肤评测</a></li>
                     *@
-                    @ViewData["Menus"]
+                    @{
+                        string MenuString = "";
+                        var listMenu = ViewData["Menus"] as List<Menu>;
+                    }
+                    @foreach (var item in ViewData["Menus"] as List<Menu>)
+                    {
+                        MenuString += "<li><a href='/"+item.Controller+"/"+item.Action+"'>" + item.Name + "</a></li>";
+                    }
+                   @Html.Raw(@MenuString)
                 </ul>
             </div>
         </div>
@@ -57,7 +65,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - xiangcaowuyu.net</p>
+            <p>&copy; 2017 - @ConfigManager.GetConfig("SysName")</p>
         </footer>
     </div>
 

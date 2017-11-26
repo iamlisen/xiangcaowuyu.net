@@ -19,7 +19,6 @@ namespace xiangcaowuyu.net.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var aa = ViewData["Menus"];
             return View();
         }
 
