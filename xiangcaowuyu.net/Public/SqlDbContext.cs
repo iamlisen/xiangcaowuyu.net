@@ -12,5 +12,6 @@ namespace xiangcaowuyu.net.Public
         public SqlDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Menu> Menu { get; set; }
+        public DbSet<Banner> Banner { get; set; }
     }
 }

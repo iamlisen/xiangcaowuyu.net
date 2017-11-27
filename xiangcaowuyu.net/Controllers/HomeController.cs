@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using xiangcaowuyu.net.Models;
 using xiangcaowuyu.net.Public.MenuHelper;
+using xiangcaowuyu.net.Public.BannerHelper;
 
 namespace xiangcaowuyu.net.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(IMenuHelper menuHelper) : base(menuHelper)
+        private readonly IBannerHelper bannerHelper;
+        public HomeController(IMenuHelper menuHelper,IBannerHelper bannerHelper) : base(menuHelper)
         {
-
+            this.bannerHelper = bannerHelper;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            /*获取banner*/
+            ViewBag.Banners = bannerHelper.GetBanners();
             return View();
         }
 

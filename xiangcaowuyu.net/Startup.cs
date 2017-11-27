@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using xiangcaowuyu.net.Public;
 using Microsoft.EntityFrameworkCore;
 using xiangcaowuyu.net.Public.MenuHelper;
+using xiangcaowuyu.net.Public.BannerHelper;
 
 namespace xiangcaowuyu.net
 {
@@ -27,7 +28,8 @@ namespace xiangcaowuyu.net
             services.AddMvc();
             string sqlConnectionString = Configuration.GetSection("SqlServer").Value;
             services.AddDbContext<SqlDbContext>(options=>options.UseSqlServer(sqlConnectionString));
-            services.AddScoped<IMenuHelper,MenuHelper>();
+            services.AddScoped<IMenuHelper,MenuHelper>()
+                .AddScoped<IBannerHelper,BannerHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

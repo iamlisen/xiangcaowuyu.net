@@ -37,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">@ConfigManager.GetConfig("SysName")</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><span><img src="~/images/logo.png" />@ConfigManager.GetConfig("SysName")</span></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -61,7 +61,7 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container body-content" style="background-image:url(/images/background.jpg)">
         @RenderBody()
         <hr />
         <footer>
