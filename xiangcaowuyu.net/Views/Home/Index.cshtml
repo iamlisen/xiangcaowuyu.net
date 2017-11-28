@@ -22,17 +22,17 @@
         </div>
         @foreach (var item in ViewBag.Banners as List<Banner>)
         {
-            <div class="item">
-                <img src="@item.PicPath" alt="@item.Alt" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <p>
-                        @item.PicDesc
-                        <a class="btn btn-default" href="@item.PicUrl">
-                            查看更多
-                        </a>
-                    </p>
-                </div>
+        <div class="item">
+            <img src="@item.PicPath" alt="@item.Alt" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    @item.PicDesc
+                    <a class="btn btn-default" href="@item.PicUrl">
+                        查看更多
+                    </a>
+                </p>
             </div>
+        </div>
         }
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -44,9 +44,10 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
 <div class="container marketing">
     <div class="row">
-        <h3 class="productblock-title">Our Special Services</h3>
+        <h3 class="productblock-title"></h3>
         <h4 class="title-subline">Join Our Beauty Clun And Be Beautiful</h4>
         <div class="col-lg-4">
             <img class="img-circle" src="~/images/ico01.png" alt="Generic placeholder image" width="140" height="140">
@@ -308,13 +309,13 @@
         </div>
     </div>
 </div>
-    
+
 <div class="cms_banner">
     <div class="row">
         <div class="col-md-4 ">
             <div class="cms-block1">
                 <h4>关于快递</h4>
-                <p style="font-size:12px;">默认EMS，其他快递请提前联系客服</p>
+                <p style="font-size:12px;">默认EMS,其他快递请联系客服</p>
             </div>
         </div>
         <div class="col-md-4 ">
@@ -326,7 +327,9 @@
         <div class="col-md-4 ">
             <div class="cms-block2">
                 <h4>联系QQ</h4>
-                <p><img style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=212729243&o=香草物语&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');" border="0" SRC=http://wpa.qq.com/pa?p =1:212729243:1 alt="点击这里给我发消息"></p>
+                <p>
+                    <a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E6%9D%8E%E6%A3%AE0324&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid=%E6%9D%8E%E6%A3%AE0324&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+                </p>
             </div>
         </div>
     </div>

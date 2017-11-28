@@ -440,7 +440,7 @@ header {
     }
 
 #cart-total {
-    background: url("../image/sprite.png") no-repeat scroll 0 0;
+    background: url("../images/sprite.png") no-repeat scroll 0 0;
     padding: 5px 0px 10px 55px;
     display: block;
 }
@@ -684,7 +684,7 @@ nav {
     font-size: 20px;
     color: #000;
     font-weight: 700;
-    padding: 30px 0;
+    padding: 20px 0;
     margin: 0;
     font-family: 'Montserrat';
 }
@@ -1553,7 +1553,7 @@ h2.price {
 }
 
 .product-slider.owl-carousel .owl-buttons > div {
-    background: url("../image/sprite.png") no-repeat 0 0;
+    background: url("../images/sprite.png") no-repeat 0 0;
     height: 20px;
     width: 20px
 }
@@ -2148,7 +2148,7 @@ p.list-group-item {
 .content .blog-heading h3, .productblock-title, .client-title, .contactus-title, .team-title, .about-title {
     font-size: 45px;
     clear: both;
-    margin: 100px 0 0px;
+    margin: 30px 0 0px;
     display: inline-block;
     width: 100%;
     padding: 0;
@@ -2160,7 +2160,7 @@ p.list-group-item {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     clear: both;
-    margin: 20px 0px 60px;
+    margin: 20px 0px 20px;
     display: inline-block;
     width: 100%;
     font-weight: 300;
@@ -2595,7 +2595,7 @@ span.review-count, span.review-edit {
 }
 
 .content .blog-wrapper .owl-buttons > div {
-    background: url("../image/sprite.png") no-repeat 0 0;
+    background: url("../images/sprite.png") no-repeat 0 0;
     height: 20px;
     width: 20px;
     font-size: 0;
@@ -3143,7 +3143,7 @@ video {
         }
 
 .brand-logo.owl-carousel .owl-buttons div {
-    background: url("../image/sprite.png") no-repeat 0 0;
+    background: url("../images/sprite.png") no-repeat 0 0;
     font-size: 0;
     top: 40%;
     height: 34px;
@@ -3463,3 +3463,51 @@ div.dioprogress_size_l {
 }
 /*about page end*/
 
+/* 小火箭css */
+#gotop1 {
+    width: 80px;
+    position: fixed;
+    bottom: 90px;
+    cursor: pointer;
+    z-index: 99998;
+    right: 50%;
+    margin-right: -620px;
+}
+
+    /* 小火箭悬停特效 */
+
+    #gotop1:hover {
+        animation: rubberBand 1s;
+    }
+
+@keyframes rubberBand {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        transform: scale3d(.95, 1.05, 1);
+    }
+
+    75% {
+        transform: scale3d(1.05, .95, 1);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+/* end 小火箭 */
