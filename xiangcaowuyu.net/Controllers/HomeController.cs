@@ -7,15 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 using xiangcaowuyu.net.Models;
 using xiangcaowuyu.net.Public.MenuHelper;
 using xiangcaowuyu.net.Public.BannerHelper;
+using xiangcaowuyu.net.Public.ProductHelper;
 
 namespace xiangcaowuyu.net.Controllers
 {
     public class HomeController : BaseController
     {
         private readonly IBannerHelper bannerHelper;
-        public HomeController(IMenuHelper menuHelper,IBannerHelper bannerHelper) : base(menuHelper)
+        private readonly IProductHelper productHelper;
+        public HomeController(IMenuHelper menuHelper,IBannerHelper bannerHelper,IProductHelper productHelper) : base(menuHelper)
         {
             this.bannerHelper = bannerHelper;
+            this.productHelper = productHelper;
         }
 
         [HttpGet]
@@ -23,6 +26,7 @@ namespace xiangcaowuyu.net.Controllers
         {
             /*获取banner*/
             ViewBag.Banners = bannerHelper.GetBanners();
+            ViewBag.Products = productHelper.GetProductIndex();
             return View();
         }
 

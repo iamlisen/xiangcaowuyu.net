@@ -1,5 +1,7 @@
-﻿@{
+﻿@using xiangcaowuyu.net.Models.Entity;
+@{
     List<Banner> banners = ViewBag.Banners as List<Banner>;
+    List<Product> products = ViewBag.Products as List<Product>;
 }
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -22,17 +24,17 @@
         </div>
         @foreach (var item in ViewBag.Banners as List<Banner>)
         {
-        <div class="item">
-            <img src="@item.PicPath" alt="@item.Alt" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    @item.PicDesc
-                    <a class="btn btn-default" href="@item.PicUrl">
-                        查看更多
-                    </a>
-                </p>
+            <div class="item">
+                <img src="@item.PicPath" alt="@item.Alt" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        @item.PicDesc
+                        <a class="btn btn-default" href="@item.PicUrl">
+                            查看更多
+                        </a>
+                    </p>
+                </div>
             </div>
-        </div>
         }
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -77,232 +79,49 @@
                 <h3 class="productblock-title">热销产品</h3>
                 <h4 class="title-subline">为每一个爱美的女人</h4>
                 <div class="row">
-                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="item">
-                            <div class="product-thumb">
-                                <div class="image product-imageblock">
-                                    <a href="#"> <img src="~/images/product/product1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="~/images/product/product1-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                                    <ul class="button-group">
-                                        <li>
-                                            <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="addtocart-btn" title="Add to Cart"> 点击购买 </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="caption product-detail">
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                    <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                                    <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="item">
-                            <div class="product-thumb">
-                                <div class="image product-imageblock">
-                                    <a href="#"> <img src="~/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="~/images/product/product2-2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                                    <ul class="button-group">
-                                        <li>
-                                            <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="addtocart-btn" title="Add to Cart">点击购买</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="caption product-detail">
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                    <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                                    <p class="price product-price">$122.00<span class="less">$150.00</span><span class="price-tax">Ex Tax: $100.00</span></p>
+                    @foreach (Product product in products)
+                    {
+                        <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                            <div class="item">
+                                <div class="product-thumb">
+                                    <div class="image product-imageblock">
+                                        <a href="#"> <img src="~/images/product/@product.Picture" alt="@product.ProductName" title="@product.ProductContent" class="img-responsive"> <img src="~/images/product/@product.MouseMovePicture" alt="@product.ProductName" title="@product.ProductContent" class="img-responsive"> </a>
+                                        <ul class="button-group">
+                                            <li>
+                                                <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="添加心愿单"><i class="fa fa-heart-o"></i></button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="加入对比"><i class="fa fa-exchange"></i></button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="快速预览"><i class="fa fa-eye"></i></button>
+                                            </li>
+                                            <li>
+                                                <a href="@product.TaoBaoUrl" target="_blank" class="addtocart-btn" title="淘宝购买"> 点击淘宝购买 </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption product-detail">
+                                        <div class="rating">
+                                            @for (int i = 0; i < product.HotLevel; i++)
+                                            {
+                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span>
+                                            }
+                                            @for (int i = 0; i < 5 - product.HotLevel; i++)
+                                            {
+                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                            }
+                                          
+                                        </div>
+                                        <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">@product.ProductName</a></h4>
+                                        <p class="price product-price">￥@product.Price <span class="price-tax">邮费: ￥@product.ExpressFee</span></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="item">
-                            <div class="product-thumb">
-                                <div class="image product-imageblock">
-                                    <a href="#"> <img src="~/images/product/product3.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="~/images/product/product3-3.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                                    <ul class="button-group">
-                                        <li>
-                                            <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="addtocart-btn" title="Add to Cart"> 点击购买 </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="caption product-detail">
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                    <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                                    <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="item">
-                            <div class="product-thumb">
-                                <div class="image product-imageblock">
-                                    <a href="#"> <img src="~/images/product/product4.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="~/images/product/product4-4.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                                    <ul class="button-group">
-                                        <li>
-                                            <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="addtocart-btn" title="Add to Cart"> 点击购买 </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="caption product-detail">
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                    <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                                    <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="item">
-                            <div class="product-thumb">
-                                <div class="image product-imageblock">
-                                    <a href="#"> <img src="~/images/product/product5.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="~/images/product/product5-5.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                                    <ul class="button-group">
-                                        <li>
-                                            <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="addtocart-btn" title="Add to Cart"> 点击购买</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="caption product-detail">
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                    <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                                    <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="item">
-                            <div class="product-thumb">
-                                <div class="image product-imageblock">
-                                    <a href="#"> <img src="~/images/product/product6.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="~/images/product/product6-6.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                                    <ul class="button-group">
-                                        <li>
-                                            <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="addtocart-btn" title="Add to Cart"> 点击购买 </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="caption product-detail">
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                    <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                                    <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="item">
-                            <div class="product-thumb">
-                                <div class="image product-imageblock">
-                                    <a href="#"> <img src="~/images/product/product7.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="~/images/product/product7-7.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                                    <ul class="button-group">
-                                        <li>
-                                            <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="addtocart-btn" title="Add to Cart"> 点击购买</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="caption product-detail">
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                    <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                                    <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="item">
-                            <div class="product-thumb">
-                                <div class="image product-imageblock">
-                                    <a href="#"> <img src="~/images/product/product8.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="~/images/product/product8-8.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
-                                    <ul class="button-group">
-                                        <li>
-                                            <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="addtocart-btn" title="Add to Cart"> 点击购买 </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="caption product-detail">
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                    <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                                    <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                     <div class="viewmore">
-                        <div class="btn">查看所有产品</div>
+                        <div class="btn"><a href="/Product/Index">查看所有产品</a></div>
                     </div>
                 </div>
             </div>
@@ -329,9 +148,9 @@
                 <h4>联系我们</h4>
                 <p>
                     <div class="row">
-                        <div class="col-xs-4" style="max-width:60px;"><a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E6%9D%8E%E6%A3%AE0324&siteid=cntaobao&status=1&charset=utf-8"><img src="~/images/alibabachat.png"/></a></div>
+                        <div class="col-xs-4" style="max-width:60px;"><a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E6%9D%8E%E6%A3%AE0324&siteid=cntaobao&status=1&charset=utf-8"><img src="~/images/alibabachat.png" /></a></div>
                         <div class="col-xs-4" style="max-width:60px;"><a target="_blank" href="tencent://message/?uin =79505393&Site =香草物语&Menu =yes"><img src="~/images/qqchat.png" /></a></div>
-                        <div class="col-xs-4" style="max-width:60px;"><a target="_blank" href="tel://15165151659&Site =香草物语&Menu =yes"><img src="~/images/phonechat.png"/></a></div>
+                        <div class="col-xs-4" style="max-width:60px;"><a target="_blank" href="tel://15165151659&Site =香草物语&Menu =yes"><img src="~/images/phonechat.png" /></a></div>
                     </div>
 
                 </p>
@@ -339,33 +158,33 @@
         </div>
     </div>
 </div>
-/*
-<div class="row">
-    <div class="col-md-3">
-        <h2>护肤方法</h2>
-        <ul>
-            <li>护肤品的使用顺序</li>
-            <li>化妆水和爽肤水有什么区别</li>
-        </ul>
+
+@*
+    <div class="row">
+        <div class="col-md-3">
+            <h2>护肤方法</h2>
+            <ul>
+                <li>护肤品的使用顺序</li>
+                <li>化妆水和爽肤水有什么区别</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h2>护肤品</h2>
+            <ul>
+                <li>最好用的爽肤水排行榜Top10</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h2>新品发售</h2>
+            <ul>
+                <li>根源补水 舒缓干燥 博研诗沁润健颜高倍保湿水</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h2>护肤品评测</h2>
+            <ul>
+                <li>醒醒吧!谁跟你说用化妆水有刺痛感是因为缺水?</li>
+            </ul>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>护肤品</h2>
-        <ul>
-            <li>最好用的爽肤水排行榜Top10</li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>新品发售</h2>
-        <ul>
-            <li>根源补水 舒缓干燥 博研诗沁润健颜高倍保湿水</li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>护肤品评测</h2>
-        <ul>
-            <li>醒醒吧!谁跟你说用化妆水有刺痛感是因为缺水?</li>
-        </ul>
-    </div>
-</div>
-*/
-<div class="line-small sort" name="10"><div class="xl2 xm2"><div class="cat-box wow fadeInUp" data-wow-delay="0.3s"><h3 class="cat-title"><a href="http://zmingcx.com/category/works/"><span class="title-i"><span></span><span></span><span></span><span></span></span>原创主题<span class="more-i"><span></span><span></span><span></span></span></a></h3><div class="clear"></div><div class="cat-site"><figure class="small-thumbnail"><a href="http://zmingcx.com/2-0-release-the-begin.html"><img src="http://zmingcx.com/wp-content/themes/begin/timthumb.php?src=http://zmingcx.com/wp-content/uploads/2015/02/Beginz.jpg&amp;w=530&amp;h=200&amp;a=&amp;zc=1" alt="Begin主题 2.0 版正式发布！"></a></figure><h2 class="entry-small-title"><a href="http://zmingcx.com/2-0-release-the-begin.html" rel="bookmark">Begin主题 2.0 版正式发布！</a></h2><div class="clear"></div><ul class="cat-list"><li class="list-date">04/13</li><li class="list-title"><i class="be be-arrowright"></i><a href="http://zmingcx.com/picture-phone.html" rel="bookmark">图像日志自动截图测试：手机</a></li><li class="list-date">06/06</li><li class="list-title"><i class="be be-arrowright"></i><a href="http://zmingcx.com/reference-form.html" rel="bookmark">引用（软件）文章形式</a></li><li class="list-date">02/22</li><li class="list-title"><i class="be be-arrowright"></i><a href="http://zmingcx.com/begin-single-demo.html" rel="bookmark">Begin主题正文功能演示</a></li><li class="list-date">02/12</li><li class="list-title"><i class="be be-arrowright"></i><a href="http://zmingcx.com/video-mv.html" rel="bookmark">视频MV</a></li></ul></div></div></div><div class="xl2 xm2"><div class="cat-box wow fadeInUp" data-wow-delay="0.3s"><h3 class="cat-title"><a href="http://zmingcx.com/category/works/ality-original/"><span class="title-i"><span></span><span></span><span></span><span></span></span>Ality主题<span class="more-i"><span></span><span></span><span></span></span></a></h3><div class="clear"></div><div class="cat-site"><figure class="small-thumbnail"><a class="random-img" href="http://zmingcx.com/ality-theme-0-32-released.html"><img src="http://imgs.zmingcx.com/wp-content/themes/begin/img/random/long.jpg" alt="Ality主题 0.32 版发布"></a></figure><h2 class="entry-small-title"><a href="http://zmingcx.com/ality-theme-0-32-released.html" rel="bookmark">Ality主题 0.32 版发布</a></h2><div class="clear"></div><ul class="cat-list"><li class="list-date">11/04</li><li class="list-title"><i class="be be-arrowright"></i><a href="http://zmingcx.com/ality-themes-faq.html" rel="bookmark">Ality主题常见问题</a></li><li class="list-date">11/02</li><li class="list-title"><i class="be be-arrowright"></i><a href="http://zmingcx.com/ality-theme-version-0-3.html" rel="bookmark">Ality主题 0.3 版发布</a></li><li class="list-date">10/12</li><li class="list-title"><i class="be be-arrowright"></i><a href="http://zmingcx.com/ality-theme-more-version-0-21.html" rel="bookmark">Ality主题更新至0.2.1版</a></li><li class="list-date">09/17</li><li class="list-title"><i class="be be-arrowright"></i><a href="http://zmingcx.com/ality-theme-02-version.html" rel="bookmark">WordPress 主题：Ality 0.2 版发布</a></li></ul></div></div></div><div class="clear"></div></div>
+*@
