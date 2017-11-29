@@ -28,7 +28,7 @@ namespace xiangcaowuyu.net
         {
             services.AddMvc();
             string sqlConnectionString = Configuration.GetSection("SqlServer").Value;
-            services.AddDbContext<SqlDbContext>(options=>options.UseSqlServer(sqlConnectionString));
+            services.AddDbContext<SqlDbContext>(options=>options.UseSqlServer(sqlConnectionString,b => b.UseRowNumberForPaging()));
             services.AddScoped<IMenuHelper,MenuHelper>()
                 .AddScoped<IBannerHelper,BannerHelper>()
                 .AddScoped<IProductHelper,ProductHelper>();

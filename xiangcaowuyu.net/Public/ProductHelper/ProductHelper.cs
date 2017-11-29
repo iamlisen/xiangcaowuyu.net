@@ -38,7 +38,7 @@ namespace xiangcaowuyu.net.Public.ProductHelper
         /// <returns></returns>
         public List<Product> GetProductPager(int limit, int offset)
         {
-            List<Product> list = sqlDbContext.Products.OrderByDescending(e => e.CreateTime).Take(limit).ToList();
+            List<Product> list = sqlDbContext.Products.OrderByDescending(e => e.CreateTime).Skip(offset).Take(limit).ToList();
             return list;
         
         }
