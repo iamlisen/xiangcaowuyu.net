@@ -36,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Util.xiangcaowuyu.net\Util.xiangcaowuyu.net.csproj" />
   </ItemGroup>
 
 </Project>
