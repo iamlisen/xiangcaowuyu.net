@@ -38,15 +38,6 @@
                 $("#login_verifycode").attr("src", "/Login/VerifyCode?time=" + Math.random());
             });
 
-            //立即注册按钮
-            $("#a_register").click(function () {//立即注册
-                $("#loginform").hide("slow", function () {//隐藏登录层
-                    $("#registerform").show("slow");//显示注册层
-                    $("#register_verifycode").attr("src", "/Login/VerifyCode?time=" + Math.random());
-                    $(".wrap").css("margin-top", ($(window).height() - $(".wrap").height()) / 2 - 100);
-                });
-            });
-
             //直接登录按钮
             $("#a_login").click(function () {//立即注册
                 $("#registerform").hide("slow", function () {//隐藏登录层
@@ -54,31 +45,6 @@
                     $("#login_verifycode").attr("src", "/Login/VerifyCode?time=" + Math.random());
                     $(".wrap").css("margin-top", ($(window).height() - $(".wrap").height()) / 2 - 100);
                 });
-            });
-
-            //获取邮件验证码
-            $("#register_getcode_email").click(function () {
-                $("#login_verifycode").attr("src", "/Login/VerifyCode?time=" + Math.random());
-            });
-
-            //是否自动登录
-            if (top.$.cookie('autologin') == 1) {
-                $("#autologin").attr('checked', 'checked');
-                $("#username").val(top.$.cookie('username'));
-                $("#password").val(top.$.cookie('password'));
-                checkLogin(1);
-            }
-
-            $("#autologin").click(function () {
-                if ($("#autologin").attr('checked')) {
-                    $("#autologin").removeAttr('checked');
-                    top.$.cookie('autologin', '', { path: '/', expires: -1 });
-                    top.$.cookie('username', '', { path: '/', expires: -1 });
-                    top.$.cookie('password', '', { path: '/', expires: -1 });
-                } else {
-                    $("#autologin").attr('checked', 'checked');
-                    top.$.cookie('autologin', '1', { path: '/', expires: 7 });
-                }
             });
 
             //提示信息
@@ -98,10 +64,9 @@
                 var username = $("#username").val();
                 var password = $("#password").val();
                 var verifycode = $("#login_verifycode").val();
-                if (top.$.cookie('username') == '' || top.$.cookie('password') == '' || top.$.cookie('autologin') == '0') {
+                if (top.$.cookie('username') == '' || top.$.cookie('password') == '') {
                     password = $.md5(password);
                 }
-
             }
 
             //用户名离开事件
@@ -159,82 +124,12 @@
                                  title="点击切换验证码" style="cursor: pointer; padding-top: 2px; padding-left: 5px;" />
                         </div>
                     </dd>
-                    <dd>
-                        <span class="y"><a href="#" onclick="alert('请联系管理员')">忘记密码了？</a></span>
-                        <label style="cursor: pointer;">
-                            <input id="autologin" type="checkbox" class="pc" style="margin-bottom: 4.5px; margin-right: 0px; vertical-align: middle;">
-                            <span>下次自动登录</span>
-                        </label>
-                    </dd>
                     <dd class="btn">
                         <button id="btnlogin" type="button" class="pn"><span>登录</span></button>
-
-                    </dd>
-                    <dd class="ft">
-                        <span>还没有帐号？</span><a id="a_register" style="cursor: pointer;">立即注册</a>
                     </dd>
                 </dl>
             </fieldset>
         </div>
-        <div id="registerform" class="container" style="display: none;">
-            <fieldset class="box">
-                <legend>注册信息</legend>
-                <dl class="form">
-                    <dd>
-                        <input id="txt_register_account" maxlength="11" type="text" class="px" placeholder="手机号">
-                    </dd>
-                    <dd style="overflow: hidden;">
-                        <div style="float: left; width: 223px;">
-                            <input id="txt_register_code" value="0000" maxlength="6" type="text" class="px" placeholder="短信验证码">
-                        </div>
-                        <div style="float: left;">
-                            <button id="register_getcode" type="button" class="pn_getcode">获取验证码</button>
-                        </div>
-                    </dd>
-                    <dd>
-                        <input id="txt_register_name" type="text" class="px" placeholder="姓名">
-                    </dd>
-                    <dd style="overflow: hidden;">
-                        <div style="float: left; width: 223px;">
-                            <input id="txt_register_code_email" maxlength="6" type="text" class="px" placeholder="邮件验证码">
-                        </div>
-                        <div style="float: left;">
-                            <button id="register_getcode_email" type="button" class="pn_getcode">获取验证码</button>
-                        </div>
-                    </dd>
-                    <dd style="margin-bottom: 5px;">
-                        <input id="txt_register_password" type="password" class="px" placeholder="密码">
-                        <p class="info">密码长度为8~30个字符，需包含字母和数字</p>
-                        <span class="passlevel"><em></em><em></em><em></em></span>
-                    </dd>
-                    <dd style="overflow: hidden;">
-                        <div style="float: left; width: 65%">
-                            <input id="txt_register_verifycode" maxlength="4" type="text" class="px" placeholder="图片验证码">
-                        </div>
-                        <div style="float: left; width: 35%;">
-                            <img id="register_verifycode" width="100" height="30" alt="点击切换验证码" title="点击切换验证码" style="cursor: pointer; padding-top: 2px; padding-left: 5px;" />
-                        </div>
-                    </dd>
-                    <dd class="tos"><span>点击注册表示您已阅读并同意</span><a href="" target="_blank">《服务条款》</a></dd>
-                    <dd class="btn">
-                        <button id="btnregister" type="button" class="pn"><span>注册</span></button>
-                    </dd>
-                    <dd class="ft">
-                        <span>已有帐号？</span><a id="a_login" style="cursor: pointer;">直接登录</a>
-                    </dd>
-                </dl>
-            </fieldset>
-        </div>
-    </div>
-    <div class="copyright">
-        <br>
-        <a href="https://www.lisen.me">木子网</a>
-    </div>
-    <div class="weixin" id="divweixin">
-        <div style="margin-bottom: 5px;">
-            扫描二维码，关注微信公众号<span style="color:red;margin-left:5px;" id="weixinClose"><img src="~/images/button_pm_close.png" /></span>
-        </div>
-        <img src="~/images/gongzhonghao.jpg" style="width: 150px;" alt="扫描关注二维码" />
     </div>
 </body>
 </html>
