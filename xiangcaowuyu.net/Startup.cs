@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace xiangcaowuyu.net
 {
@@ -45,7 +46,11 @@ namespace xiangcaowuyu.net
                 .AddScoped<IBannerHelper, BannerHelper>()
                 .AddScoped<IProductHelper, ProductHelper>();
 
-
+            services.Configure<FormOptions>(x =>
+            {
+                x.ValueLengthLimit = int.MaxValue;
+                x.MultipartBodyLengthLimit = int.MaxValue; // In case of multipart
+            });
 
         }
 
