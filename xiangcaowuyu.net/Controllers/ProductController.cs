@@ -7,6 +7,7 @@ using xiangcaowuyu.net.Public.ProductHelper;
 using xiangcaowuyu.net.Public.MenuHelper;
 using xiangcaowuyu.net.Public;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace xiangcaowuyu.net.Controllers
 {
@@ -33,6 +34,15 @@ namespace xiangcaowuyu.net.Controllers
             //转成Json格式
             return Json(new { total = total, rows = rows }, settings);
             //return Json(new { total = total, rows = rows });
+        }
+
+        /// <summary>
+        /// 添加商品
+        /// </summary>
+        [Authorize(Roles = "admin")]
+        public ActionResult AddProduct()
+        {
+            return View();
         }
     }
 }

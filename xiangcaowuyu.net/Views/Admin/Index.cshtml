@@ -28,9 +28,9 @@
         }
 
         $(function () {
-            $(".wrap").css("margin-top", ($(window).height() - $(".wrap").height()) / 2 - 35);
+            $(".wrap").css("margin-top", ($(window).height() - $(".wrap").height()) / 2 + 40);
             $(window).resize(function (e) {
-                $(".wrap").css("margin-top", ($(window).height() - $(".wrap").height()) / 2 - 35);
+                $(".wrap").css("margin-top", ($(window).height() - $(".wrap").height()) / 2+ 40);
                 e.stopPropagation();
             });
 
@@ -69,7 +69,7 @@
                     data: { username: $.trim($("#username").val()), password: $.trim($("#password").val()), verifycode: $.trim($("#verifycode").val()) },
                     success: function (info) {
                         if (info == "") {
-                            window.location.href = "/Home/Index";
+                            window.location.href = "/Admin/Default";
                         } else {
                             formMessage(info);
                             $("#login_verifycode").click();

@@ -10,6 +10,7 @@ using xiangcaowuyu.net.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace xiangcaowuyu.net.Controllers
 {
@@ -66,6 +67,16 @@ namespace xiangcaowuyu.net.Controllers
             UserInfo.LoginTime = DateTime.Now;
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
             return result;
+        }
+
+        /// <summary>
+        ///默认后台
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles ="admin")]
+        public ActionResult Default()
+        {
+            return View();
         }
     }
 }

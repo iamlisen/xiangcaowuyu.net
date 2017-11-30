@@ -1,0 +1,41 @@
+﻿@using xiangcaowuyu.net.Public;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ConfigManager.GetConfig("SysName")</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/js/plugins/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+    <link rel="stylesheet" href="~/css/responsive.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-table-develop/dist/bootstrap-table.css" />
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/common.js" asp-append-version="true"></script>
+    <script src="~/js/jstree.min.js" asp-append-version="true"></script>
+    <script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
+    <script src="~/js/ScrollToPlugin.min.js" asp-append-version="true"></script>
+    <script src="~/js/TweenMax.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-paginator/src/bootstrap-paginator.js"></script>
+    <script src="~/lib/bootstrap-table-develop/dist/bootstrap-table.js"></script>
+    <script src="~/lib/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/js/plugins/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+    <script type="text/javascript" src="~/js/plugins/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        //初始化checkbox为bootstrapSwitch
+        $("input[type='checkbox']").bootstrapSwitch({
+            labelWidth: "auto",
+            onText: "是",
+            offText: "否",
+            
+        });
+    </script>
+</body>
+</html>

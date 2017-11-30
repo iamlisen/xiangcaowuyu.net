@@ -1,0 +1,40 @@
+﻿@using xiangcaowuyu.net.Public;
+@{
+    ViewData["Title"] = "Default";
+    Layout = null;
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>@ConfigManager.GetConfig("SysName")</title>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link href="~/lib/bootstrap/dist/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+    <script src="~/js/plugins/jquery.md5.js"></script>
+    <script src="~/js/plugins/cookie/jquery.cookie.js"></script>
+    <script src="~/js/plugins/validator/validator.js"></script>
+    <script src="~/js/plugins/tipso.min.js"></script>
+    <!--[if IE]>
+    <div class="tixing"><strong>温馨提示：感谢您访问本站，经检测您使用的浏览器为IE浏览器，为了获得更好的浏览体验，请使用Chrome、Firefox或其他浏览器。</strong>
+    </div>
+    <![endif]-->
+    <script>
+        $(function () {
+            $(".wrap").css("height", window.outerHeight );
+        });
+    </script>
+</head>
+<body style="height:100%;">
+    <div class="wrap" style="width:100%;height:100%;">
+        <div class="container">
+            <fieldset class="box">
+                <legend style="text-align:center;">请选择发布操作</legend>
+                <dl class="form">
+                    <dd><a href="/Product/AddProduct" />发布商品</dd>
+                </dl>
+            </fieldset>
+        </div>
+    </div>
+</body>
+</html>

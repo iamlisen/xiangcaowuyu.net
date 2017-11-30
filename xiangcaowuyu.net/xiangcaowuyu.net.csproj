@@ -34,6 +34,7 @@
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\images\banner\" />
+    <Folder Include="wwwroot\UploadImage\" />
   </ItemGroup>
 
   <ItemGroup>
