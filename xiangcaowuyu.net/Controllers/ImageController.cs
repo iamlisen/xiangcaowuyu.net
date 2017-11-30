@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using System.Web;
 using Microsoft.AspNetCore.Http;
+using xiangcaowuyu.net.Public;
 
 namespace xiangcaowuyu.net.Controllers
 {
@@ -42,24 +43,34 @@ namespace xiangcaowuyu.net.Controllers
         [HttpPost]
         public JsonResult UploadOnlyImage(IFormFile fileinput)
         {
-            var files = HttpContext.Request.Form.Files;
-            var file = files.FirstOrDefault();
-            var fileName = file.FileName;
-            string fileContentType = file.ContentType.ToString();
-            if (!(fileContentType == "image/bmp" || fileContentType == "image/gif" ||
-                   fileContentType == "image/png" || fileContentType == "image/x-png" || fileContentType == "image/jpeg"
-                   || fileContentType == "image/pjpeg"))
+            try
             {
-                return Json(new { msg = "小主，只能上传图片", status = "false" });
+                var files = HttpContext.Request.Form.Files;
+                var file = files.FirstOrDefault();
+                var fileName = file.FileName;
+                string fileContentType = file.ContentType.ToString();
+                if (!(fileContentType == "image/bmp" || fileContentType == "image/gif" ||
+                       fileContentType == "image/png" || fileContentType == "image/x-png" || fileContentType == "image/jpeg"
+                       || fileContentType == "image/pjpeg"))
+                {
+                    return Json(new { msg = "小主，只能上传图片", status = "false" });
+                }
+                string filePath = Directory.GetCurrentDirectory() + @"\wwwroot\UploadImage";
+                fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + fileName;
+                using (FileStream fs = new FileStream(filePath + "\\" + fileName, FileMode.Create))
+                {
+                    file.CopyTo(fs);
+                }
+                string imageurl = "/UploadImage/" + fileName;
+                WriteLogs.WriteLog("log.log", "exception", "111111111111111");
+                return Json(new { msg = fileName, status = "false" }, new Newtonsoft.Json.JsonSerializerSettings());
+               
             }
-            string filePath = Directory.GetCurrentDirectory() + @"\wwwroot\UploadImage";
-            fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + fileName;
-            using (FileStream fs = new FileStream(filePath + "\\" + fileName, FileMode.Create))
+            catch (Exception ex)
             {
-                file.CopyTo(fs);
+                WriteLogs.WriteLog("log.log", "exception", ex.Message);
+                return null;
             }
-            string imageurl = "/UploadImage/" + fileName;
-            return Json(new { msg = fileName, status = "false" },new Newtonsoft.Json.JsonSerializerSettings());
         }
     }
 }
