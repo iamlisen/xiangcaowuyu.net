@@ -23,7 +23,7 @@
         window.onkeydown = function (e) {
             if (!e) e = window.event;
             if ((e.keyCode || e.which) == 13) {
-                $("#btnLogin").click();
+                $("#btnlogin").click();
             }
         }
 
@@ -71,7 +71,7 @@
                         if (info == "") {
                             window.location.href = "/Home/Index";
                         } else {
-                            formMessage(info, "warn");
+                            formMessage(info);
                             $("#login_verifycode").click();
                             $("#password").val('');
                         }
