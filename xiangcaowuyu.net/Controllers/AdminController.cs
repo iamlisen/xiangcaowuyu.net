@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Util.xiangcaowuyu.net;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using xiangcaowuyu.net.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace xiangcaowuyu.net.Controllers
 {
@@ -33,27 +37,34 @@ namespace xiangcaowuyu.net.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public string CheckLogin()
+        public async Task<string> CheckLogin()
         {
             string result = "";
             string userName = HttpContext.Request.Form["username"].ToString();
             string passWord = HttpContext.Request.Form["password"].ToString();
             string verifyCode = HttpContext.Request.Form["verifycode"].ToString();
-            if (userName != "hongrong" || passWord != "20160822")
+            if (userName != "test" || passWord != "test")
             {
                 result = "用户名或密码不正确";
                 return result;
             }
-            if(HttpContext.Session.Get("verifyCode")==null || string.IsNullOrEmpty(HttpContext.Session.Get("verifyCode").ToString()))
+            if (HttpContext.Session.Get("verifyCode") == null || string.IsNullOrEmpty(HttpContext.Session.Get("verifyCode").ToString()))
             {
                 result = "验证码已过期，请重新刷新验证码";
                 return result;
             }
-            if(HttpContext.Session.GetString("verifyCode").ToString().ToLower() != verifyCode.ToLower())
+            if (HttpContext.Session.GetString("verifyCode").ToString().ToLower() != verifyCode.ToLower())
             {
                 result = "验证码输入错误，请重新输入";
                 return result;
             }
+            var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+            identity.AddClaim(new Claim(ClaimTypes.Sid, userName));
+            identity.AddClaim(new Claim(ClaimTypes.Name, userName));
+            identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
+            UserInfo.UserName = userName;
+            UserInfo.LoginTime = DateTime.Now;
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
             return result;
         }
     }

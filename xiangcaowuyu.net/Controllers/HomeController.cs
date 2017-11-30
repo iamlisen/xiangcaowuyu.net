@@ -8,6 +8,7 @@ using xiangcaowuyu.net.Models;
 using xiangcaowuyu.net.Public.MenuHelper;
 using xiangcaowuyu.net.Public.BannerHelper;
 using xiangcaowuyu.net.Public.ProductHelper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace xiangcaowuyu.net.Controllers
 {

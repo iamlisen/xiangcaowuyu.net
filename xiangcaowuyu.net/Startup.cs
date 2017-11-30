@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using xiangcaowuyu.net.Public.MenuHelper;
 using xiangcaowuyu.net.Public.BannerHelper;
 using xiangcaowuyu.net.Public.ProductHelper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace xiangcaowuyu.net
 {
@@ -28,6 +29,11 @@ namespace xiangcaowuyu.net
         {
             services.AddSession();
             services.AddMvc();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, option => {
+                    option.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Admin/Index");
+                    option.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Error/Forbidden");
+                });
             string sqlConnectionString = Configuration.GetSection("SqlServer").Value;
             services.AddDbContext<SqlDbContext>(options=>options.UseSqlServer(sqlConnectionString,b => b.UseRowNumberForPaging()));
             services.AddScoped<IMenuHelper,MenuHelper>()
@@ -49,6 +55,7 @@ namespace xiangcaowuyu.net
             }
             app.UseSession();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
