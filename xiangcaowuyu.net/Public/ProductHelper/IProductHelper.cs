@@ -49,5 +49,14 @@ namespace xiangcaowuyu.net.Public.ProductHelper
         /// <param name="pageIndex">第几页面</param>
         /// <returns></returns>
         List<Product> GetProductPager(int limit, int offset);
+
+        string SaveProduct(Product product);
+
+        /// <summary>
+        /// 根据ID获取产品
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Product GetProduct(string id);
     }
 }

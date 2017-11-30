@@ -1,0 +1,17 @@
+﻿@model xiangcaowuyu.net.Models.Entity.Product
+
+@{
+    ViewData["Title"] = "ViewProduct";
+}
+
+<div style="text-align:center;">
+    <h4 style="text-align:center;">@Html.DisplayNameFor(model => model.ProductName)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.Raw(Model.ProductContent);
+    </dl>
+</div>
+<div style="text-align:center">
+    <a asp-action="EditProduct" asp-route-id="@Model.ID" class="btn btn-success">编辑产品</a> |
+    <a asp-action="Index" class="btn btn-primary">返回列表</a>
+</div>

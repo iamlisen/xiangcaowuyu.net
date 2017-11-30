@@ -27,7 +27,7 @@
     <script src="~/lib/bootstrap-table-develop/dist/bootstrap-table.js"></script>
     <script src="~/lib/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
     <script src="~/js/plugins/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
-    <script type="text/javascript" src="~/js/plugins/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="~/lib/ckeditor/3.6.4/Content/Scripts/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         //初始化checkbox为bootstrapSwitch
         $("input[type='checkbox']").bootstrapSwitch({
@@ -37,5 +37,6 @@
             
         });
     </script>
+    @RenderSection("Scripts", false);
 </body>
 </html>

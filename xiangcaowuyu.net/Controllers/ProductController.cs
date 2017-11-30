@@ -8,6 +8,7 @@ using xiangcaowuyu.net.Public.MenuHelper;
 using xiangcaowuyu.net.Public;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
+using xiangcaowuyu.net.Models.Entity;
 
 namespace xiangcaowuyu.net.Controllers
 {
@@ -40,9 +41,63 @@ namespace xiangcaowuyu.net.Controllers
         /// 添加商品
         /// </summary>
         [Authorize(Roles = "admin")]
+        [HttpGet]
         public ActionResult AddProduct()
         {
             return View();
+        }
+
+        /// <summary>
+        /// 添加商品
+        /// </summary>
+        [Authorize(Roles = "admin")]
+        public ActionResult AddProduct(Product product)
+        {
+            return View(product);
+        }
+
+        /// <summary>
+        /// 保存商品
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "admin")]
+        public ActionResult SaveProduct(Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AddProduct","Product");
+            }
+            if (productHelper.SaveProduct(product) == "1")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("AddProduct", "Product");
+            }
+        }
+
+        /// <summary>
+        /// 查看
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ViewProduct(string id)
+        {
+            Product product = productHelper.GetProduct(id);
+            return View(product);
+        }
+
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles ="admin")]
+        public ActionResult EditProduct(string id)
+        {
+            Product product = productHelper.GetProduct(id);
+            return View(product);
         }
     }
 }

@@ -12,6 +12,9 @@ using xiangcaowuyu.net.Public.MenuHelper;
 using xiangcaowuyu.net.Public.BannerHelper;
 using xiangcaowuyu.net.Public.ProductHelper;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace xiangcaowuyu.net
 {
@@ -29,16 +32,21 @@ namespace xiangcaowuyu.net
         {
             services.AddSession();
             services.AddMvc();
+            services.AddDirectoryBrowser();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, option => {
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, option =>
+                {
                     option.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Admin/Index");
                     option.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Error/Forbidden");
                 });
             string sqlConnectionString = Configuration.GetSection("SqlServer").Value;
-            services.AddDbContext<SqlDbContext>(options=>options.UseSqlServer(sqlConnectionString,b => b.UseRowNumberForPaging()));
-            services.AddScoped<IMenuHelper,MenuHelper>()
-                .AddScoped<IBannerHelper,BannerHelper>()
-                .AddScoped<IProductHelper,ProductHelper>();
+            services.AddDbContext<SqlDbContext>(options => options.UseSqlServer(sqlConnectionString, b => b.UseRowNumberForPaging()));
+            services.AddScoped<IMenuHelper, MenuHelper>()
+                .AddScoped<IBannerHelper, BannerHelper>()
+                .AddScoped<IProductHelper, ProductHelper>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +63,13 @@ namespace xiangcaowuyu.net
             }
             app.UseSession();
             app.UseStaticFiles();
+            app.UseFileServer(new FileServerOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/UploadImage")),
+                RequestPath = new PathString("/UploadImage"),
+                EnableDirectoryBrowsing = true,
+                EnableDefaultFiles = true
+            });
             app.UseAuthentication();
             app.UseMvc(routes =>
             {

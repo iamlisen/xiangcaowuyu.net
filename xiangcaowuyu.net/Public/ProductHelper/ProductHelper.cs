@@ -14,6 +14,11 @@ namespace xiangcaowuyu.net.Public.ProductHelper
             this.sqlDbContext = sqlDbContext;
         }
 
+        public Product GetProduct(string id)
+        {
+            return sqlDbContext.Products.Where(e=>e.ID==id).FirstOrDefault<Product>();
+        }
+
         public Product GetProductByCode(string code)
         {
             Product product = sqlDbContext.Products.Where<Product>(e => e.ProductCode == code).FirstOrDefault();
@@ -51,6 +56,21 @@ namespace xiangcaowuyu.net.Public.ProductHelper
         public List<Product> GetProductsSort(string sort, SortType sortType)
         {
             throw new NotImplementedException();
+        }
+
+        public string SaveProduct(Product product)
+        {
+            if (product.ID == "")
+            {
+                product.ID = Guid.NewGuid().ToString();
+                sqlDbContext.Products.Add(product);
+            }
+            else
+            {
+                sqlDbContext.Products.Update(product);
+            }           
+            sqlDbContext.SaveChanges();
+            return "1";
         }
     }
 }

@@ -17,7 +17,7 @@ namespace xiangcaowuyu.net.Models.Entity
         /// <summary>
         /// 产品编号
         /// </summary>
-        [Display(Name ="产品价格")]
+        [Display(Name = "产品编号")]
         [Required]
         public string ProductCode { get; set; }
 
@@ -38,7 +38,7 @@ namespace xiangcaowuyu.net.Models.Entity
         /// <summary>
         /// 产品价格
         /// </summary>
-        [Display(Name = "产品编号")]
+        [Display(Name = "产品价格")]
         [Required]
         public decimal Price { get; set; }
 

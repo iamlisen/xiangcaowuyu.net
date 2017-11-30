@@ -1,0 +1,175 @@
+﻿@model xiangcaowuyu.net.Models.Entity.Product
+@{
+    Layout = "_LayoutAdd";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddProduct</title>
+</head>
+<body>
+    <div style="text-align:center;">
+        <h4 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size:24px;color:deeppink;">添加商品</h4>
+    </div>
+    <hr />
+    <div>
+        <form asp-action="SaveProduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="container">
+                @* 第一行开始 *@
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProductCode" class="control-label"></label>
+                            <input asp-for="ProductCode" class="form-control" />
+                            <span asp-validation-for="ProductCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProductName" class="control-label"></label>
+                            <input asp-for="ProductName" class="form-control" />
+                            <span asp-validation-for="ProductName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                @* 第一行结束 *@
+                @* 第二行开始 *@
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"></label>
+                            <input asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="TaoBaoUrl" class="control-label"></label>
+                            <input asp-for="TaoBaoUrl" class="form-control" />
+                            <span asp-validation-for="TaoBaoUrl" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                @* 第二行结束 *@
+                @* 第三行开始 *@
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="IsFreeExpress" class="control-label"></label>
+                            <input asp-for="IsFreeExpress" class="form-control" />
+                            <span asp-validation-for="IsFreeExpress" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ExpressFee" class="control-label"></label>
+                            <input asp-for="ExpressFee" class="form-control" />
+                            <span asp-validation-for="ExpressFee" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                @* 第三行结束*@
+                @* 第四行开始 *@
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="IsHot" class="control-label"></label>
+                            <div class="switch switch-mini" data-on="info" data-off="success" style="height:34px;">
+                                <input asp-for="IsHot" type="checkbox" checked style="height:34px;" />
+                            </div>
+                            <span asp-validation-for="IsHot" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="HotLevel" class="control-label"></label>
+                            <input asp-for="HotLevel" class="form-control" />
+                            <span asp-validation-for="HotLevel" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                @* 第四行结束 *@
+                @* 第五行开始 *@
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6"></div>
+                </div>
+                @* 第五行结束 *@
+                @* 第六行开始 *@
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" style="display:none;">
+                            <label asp-for="Count" class="control-label"></label>
+                            <input asp-for="Count" class="form-control" value="0" />
+                            <span asp-validation-for="Count" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" style="display:none;">
+                            <label asp-for="Surplus" class="control-label"></label>
+                            <input asp-for="Surplus" class="form-control" value="0" />
+                            <span asp-validation-for="Surplus" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                @* 第六行结束 *@
+                @* 第七行开始 *@
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Picture" class="control-label"></label>
+                            <input asp-for="Picture" class="form-control" />
+                            <span asp-validation-for="Picture" class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="MouseMovePicture" class="control-label"></label>
+                            <input asp-for="MouseMovePicture" class="form-control" />
+                            <span asp-validation-for="MouseMovePicture" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="display:none;">
+                    <label asp-for="CreateTime" class="control-label"></label>
+                    <input asp-for="CreateTime" class="form-control" />
+                    <span asp-validation-for="CreateTime" class="text-danger"></span>
+                </div>
+                @* 第七行结束 *@
+                @* 第八行开始 *@
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="ProductContent" class="control-label"></label>
+                            <textarea asp-for="ProductContent" class="form-control ckeditor"></textarea>
+                            <span asp-validation-for="ProductContent" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="display:none;">
+                        <div class="form-group">
+                            <label asp-for="ID" class="control-label"></label>
+                            <input asp-for="ID" class="form-control ckeditor"/>
+                            <span asp-validation-for="ID" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                @* 第八行结束 *@
+                @* 按钮 *@
+                <div class="row" style="text-align:center;">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="submit" value="提交" class="btn btn-default" />
+                            <input type="reset" value="重置" class="btn btn-danger" />
+                            <a asp-action="Index" class="btn btn-primary">返回</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>
