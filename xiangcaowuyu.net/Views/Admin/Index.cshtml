@@ -5,6 +5,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
     <title>@ConfigManager.GetConfig("SysName")</title>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <link href="~/lib/bootstrap/dist/css/font-awesome.css" rel="stylesheet" />
@@ -35,16 +36,7 @@
 
             //登录界面点击刷新二维码
             $("#login_verifycode").click(function () {
-                $("#login_verifycode").attr("src", "/Login/VerifyCode?time=" + Math.random());
-            });
-
-            //直接登录按钮
-            $("#a_login").click(function () {//立即注册
-                $("#registerform").hide("slow", function () {//隐藏登录层
-                    $("#loginform").show("slow");//显示注册层
-                    $("#login_verifycode").attr("src", "/Login/VerifyCode?time=" + Math.random());
-                    $(".wrap").css("margin-top", ($(window).height() - $(".wrap").height()) / 2 - 100);
-                });
+                $("#login_verifycode").attr("src", "/Admin/GetVirifyCode?time=" + Math.random());
             });
 
             //提示信息
@@ -58,49 +50,34 @@
             }
 
             //登录验证
-            function checkLogin(autologin) {
-                $("#btnlogin").addClass('active').attr('disabled', 'disabled');
-                $("#btnlogin").find('span').hide();
-                var username = $("#username").val();
-                var password = $("#password").val();
-                var verifycode = $("#login_verifycode").val();
-                if (top.$.cookie('username') == '' || top.$.cookie('password') == '') {
-                    password = $.md5(password);
-                }
-            }
-
-            //用户名离开事件
-            $("#txt_register_account").blur(function () {
-                var myreg = /^(((17[0-9]{1})|(13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-                if ($(this).val() == '') {
-                    formMessage('请输入手机号');
-                    $(this).focus();
-                } else if (!myreg.test($(this).val())) {
-                    $(this).focus();
-                    formMessage('请输入正确的手机号');
-                }
-            });
-
-            //密码强度检测
-            $("#txt_register_password").bind("input propertychange", function () {
-                $(".passlevel").find("em").removeClass("bar");
-                if ($(this).val().length < 8) {
+            $("#btnlogin").click(function () {
+                if ($.trim($("#username").val()) == "") {
+                    formMessage("请输入用户名", "warn");
                     return;
-                } else {
-                    if (/\d/.test($(this).val())) {
-                        $(".passlevel").find("em:eq(0)").addClass("bar");
-                        if (/[a-z]/.test($(this).val()) || /[A-Z]/.test($(this).val())) {
-                            $(".passlevel").find("em:eq(0)").addClass("bar");
-                            $(".passlevel").find("em:eq(1)").addClass("bar");
-                            if (/\W/.test($(this).val())) {
-                                $(".passlevel").find("em").addClass("bar");
-                            }
+                }
+                if ($.trim($("#password").val()) == "") {
+                    formMessage("请输入密码", "warn");
+                    return;
+                }
+                if ($.trim($("#verifycode").val()) == "") {
+                    formMessage("请输入验证码", "warn");
+                    return;
+                }
+                $.ajax({
+                    url: "/Admin/CheckLogin",
+                    type: "post",
+                    data: { username: $.trim($("#username").val()), password: $.trim($("#password").val()), verifycode: $.trim($("#verifycode").val()) },
+                    success: function (info) {
+                        if (info == "") {
+                            window.location.href = "/Home/Index";
+                        } else {
+                            formMessage(info, "warn");
+                            $("#login_verifycode").click();
+                            $("#password").val('');
                         }
                     }
-                }
+                });
             });
-            //微信关闭按钮
-            $("#weixinClose").click(function () { $("#divweixin").css("display", "none"); });
         });
     </script>
 </head>
@@ -120,7 +97,7 @@
                             <input id="verifycode" maxlength="4" type="text" class="px" placeholder="图片验证码">
                         </div>
                         <div style="float: left; width: 35%">
-                            <img id="login_verifycode" class="img_verifycode" src="~/Login/VerifyCode" width="100" height="30" alt="点击切换验证码"
+                            <img id="login_verifycode" class="img_verifycode" src="~/Admin/GetVirifyCode" width="100" height="30" alt="点击切换验证码"
                                  title="点击切换验证码" style="cursor: pointer; padding-top: 2px; padding-left: 5px;" />
                         </div>
                     </dd>
