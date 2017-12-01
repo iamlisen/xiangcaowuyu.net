@@ -26,11 +26,12 @@
     <div id="toubiao" style="text-align:center;">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td width="86%"><img src="/images/kids.gif" width="15" height="14"/>FACE栏目可以找些"洋葱头"或叫"白馒头"的表情么FACE栏目可以找些"洋葱头"或叫"白馒头"的表情么
-                    <a style="cursor:grabbing" onClick="document.getElementById('toubiao').style.display='none';">
+                <td width="86%">
+                    <img src="/images/kids.gif" width="15" height="14" />本站庆祝开业，全场满100包邮，全场商品一律九折优惠。
+                    <a style="cursor:grabbing" onClick="document.getElementById('toubiao').style.display = 'none'; $.cookie('isAdClose', 'true', { expires:7 })">
                         <img src="/images/close.gif" width=84 height=11 hspace="6" border=0>
                     </a>
-                </td>                
+                </td>
             </tr>
         </table>
     </div>
@@ -92,9 +93,14 @@
     <script src="~/lib/bootstrap-paginator/src/bootstrap-paginator.js"></script>
     <script src="~/lib/bootstrap-table-develop/dist/bootstrap-table.js"></script>
     <script src="~/lib/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/js/plugins/cookie/jquery.cookie.js"></script>
     @RenderSection("Scripts", required: false)
     <script>
         $(function () {
+
+            if ($.cookie('isAdClose') == 'true') {
+                setTimeout(function () { $("#toubiao").hide('slow') }, 5000);
+            }
 
             // 默认速度
             $("#gotop6").click(function () {
