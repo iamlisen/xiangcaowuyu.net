@@ -3,9 +3,13 @@
 @{
     List<Banner> banners = ViewBag.Banners as List<Banner>;
     List<Product> products = ViewBag.Products as List<Product>;
+    List<Product> randomProducts = ViewBag.RandomProducts as List<Product>;
 }
-@section Styles{ 
+@section Styles{
     <link rel="stylesheet" href="~/css/gdt-style.css" />
+    <link href="~/lib/scroller/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/scroller/css/own.css" rel="stylesheet" type="text/css" />
+
 }
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -57,21 +61,21 @@
         <h4 class="title-subline">Join Our Beauty Clun And Be Beautiful</h4>
         <div class="col-lg-4">
             <img class="img-circle" src="~/images/ico01.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>MASSAGE SERVICES</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur aditpisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-            <p><a class="btn btn-default" href="#" role="button">Read More</a></p>
+            <h2>魔法泡泡刷</h2>
+            <p>深层清洁、柔和卸妆、细胞注氧个、保湿滋润、美白靓肤、紧致毛孔、镇静肌肤、舒缓敏感、抗击炎症、预防痘痘<br/></p>
+            <p><a class="btn btn-default" href="/Product/ViewProduct/30443956-4b33-4b81-bc0b-695ba9e854c4" role="button">点击购买</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle" src="~/images/ico02.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>SPA SERVICES</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur aditpisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-            <p><a class="btn btn-default" href="#" role="button">Read More</a></p>
+            <h2>气泡精华露</h2>
+            <p>维持肌肤弱酸性PH值、塑造明亮通透肤色、平衡肌肤油脂分泌、消除皮肤干纹、滋润营养肌肤、改善肌肤质地、高效补水、强力锁水、持久湿润<br/></p>
+            <p><a class="btn btn-default" href="/Product/ViewProduct/596718e2-efd0-4f6e-9146-0bc87eed0303" role="button">点击购买</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle" src="~/images/ico03.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>MAKE UP SERVICES</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur aditpisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-            <p><a class="btn btn-default" href="#" role="button">Read More</a></p>
+            <h2>水炸弹爆水修复面膜</h2>
+            <p>收缩毛孔、舒缓抗敏、抗衰去皱、淡化斑点、深层美白、改善暗沉、抽油保湿、极速补水、舒缓痘印、天然植物油精粹、隐形天丝膜布</p>
+            <p><a class="btn btn-default" href="/Product/ViewProduct/80323519-0c36-4d57-8355-57acedaa1723" role="button">点击购买</a></p>
         </div>
     </div>
 </div>
@@ -164,39 +168,33 @@
 </div>
 <div class="side-bar">
     <a href="http://wpa.qq.com/msgrd?V=1&amp;Uin=@ConfigManager.GetConfig("QQ")&amp;Site=香草物语&Menu=yes" class="icon-qq">QQ在线咨询</a>
-    <a href="" class="icon-chat">微信<div class="chat-tips"><i></i><img style="width:138px;height:138px;" src="images/weixin.jpg" alt="扫码加微信"></div>微信咨询</a>
+    <a href="" class="icon-chat">微信<div class="chat-tips"><i></i><img style="width:138px;height:138px;" src="~/images/weixin.jpg" alt="扫码加微信"></div>微信咨询</a>
     <a target="_blank" href="@ConfigManager.GetConfig("weibo")" class="icon-blog">微博</a>
     <a href="@ConfigManager.GetConfig("Email")" class="icon-mail">邮箱</a>
 </div>
-@*
-    <div class="row">
-        <div class="col-md-3">
-            <h2>护肤方法</h2>
-            <ul>
-                <li>护肤品的使用顺序</li>
-                <li>化妆水和爽肤水有什么区别</li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h2>护肤品</h2>
-            <ul>
-                <li>最好用的爽肤水排行榜Top10</li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h2>新品发售</h2>
-            <ul>
-                <li>根源补水 舒缓干燥 博研诗沁润健颜高倍保湿水</li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h2>护肤品评测</h2>
-            <ul>
-                <li>醒醒吧!谁跟你说用化妆水有刺痛感是因为缺水?</li>
-            </ul>
+<div class="row">
+    <fieldset><legend align="center">随便看看</legend></fieldset>
+    <div class="scroller demo1">
+        <div class="inside">
+            @{
+                string randomProductImg = "";
+            }
+
+            @foreach (Product product in randomProducts)
+            {
+                randomProductImg += "<a href='/Product/ViewProduct/" + product.ID + "'><img style='width:auto;height:auto;max-width:100%;max-height:100%' src='/UploadImage/" + product.Picture + "' alt=''/></a>";
+            }
+            @if (randomProducts.Count < 15)
+            {
+                for (int i = 1; i < 15 - randomProducts.Count; i++)
+                {
+                    randomProductImg += "<a href='#'><img style='width:auto;height:auto;max-width:100%;max-height:100%' src='/UploadImage/Random/img" + i+ ".jpg '" + " alt=''/></a>";
+                }
+            }
+            @Html.Raw(randomProductImg)
         </div>
     </div>
-*@
+</div>
 @section Scripts{
     <script>
         $(function () {
@@ -210,4 +208,8 @@
             });
         });
     </script>
+    <script type="application/javascript" src="~/js/jquery.mgang.small2big.js"></script>
+    <script src="~/lib/scroller/js/jquery.easing.js" type="text/javascript"></script>
+    <script src="~/lib/scroller/js/scroller.js" type="text/javascript"></script>
+    <script src="~/lib/scroller/js/init.js" type="text/javascript"></script>
 }

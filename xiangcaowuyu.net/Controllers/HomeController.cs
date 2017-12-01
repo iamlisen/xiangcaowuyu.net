@@ -28,6 +28,7 @@ namespace xiangcaowuyu.net.Controllers
             /*获取banner*/
             ViewBag.Banners = bannerHelper.GetBanners();
             ViewBag.Products = productHelper.GetProductIndex();
+            ViewBag.RandomProducts = productHelper.GetProductRandom();
             return View();
         }
 
@@ -77,5 +78,6 @@ namespace xiangcaowuyu.net.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

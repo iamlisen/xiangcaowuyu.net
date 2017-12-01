@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace xiangcaowuyu.net.Public.ProductHelper
 
         public Product GetProduct(string id)
         {
-            return sqlDbContext.Products.Where(e=>e.ID==id).FirstOrDefault<Product>();
+            return sqlDbContext.Products.Where(e => e.ID == id).FirstOrDefault<Product>();
         }
 
         public Product GetProductByCode(string code)
@@ -45,7 +46,17 @@ namespace xiangcaowuyu.net.Public.ProductHelper
         {
             List<Product> list = sqlDbContext.Products.OrderByDescending(e => e.CreateTime).Skip(offset).Take(limit).ToList();
             return list;
-        
+
+        }
+
+        /// <summary>
+        /// 获取首页随机图片
+        /// </summary>
+        /// <returns></returns>
+        public List<Product> GetProductRandom()
+        {
+            List<Product> list = sqlDbContext.Products.FromSql("SELECT TOP 15 * FROM Products order by NEWID()").ToList<Product>();
+            return list;
         }
 
         public List<Product> GetProducts()
@@ -68,7 +79,7 @@ namespace xiangcaowuyu.net.Public.ProductHelper
             else
             {
                 sqlDbContext.Products.Update(product);
-            }           
+            }
             sqlDbContext.SaveChanges();
             return "1";
         }

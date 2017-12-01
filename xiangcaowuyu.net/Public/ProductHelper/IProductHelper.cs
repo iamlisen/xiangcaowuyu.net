@@ -44,6 +44,12 @@ namespace xiangcaowuyu.net.Public.ProductHelper
         List<Product> GetProductIndex();
 
         /// <summary>
+        /// 获取首页随机图片
+        /// </summary>
+        /// <returns></returns>
+        List<Product> GetProductRandom();
+
+        /// <summary>
         /// 获取分页数据
         /// </summary>
         /// <param name="pageIndex">第几页面</param>
