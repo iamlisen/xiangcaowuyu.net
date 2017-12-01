@@ -14,7 +14,7 @@
     </div>
     <hr />
     <div>
-        <form asp-action="SaveProduct">
+        <form asp-action="SaveProduct" id="SaveProduct">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="container">
                 @* 第一行开始 *@
@@ -122,7 +122,7 @@
                             <label asp-for="Picture" class="control-label"></label>
                             <input asp-for="Picture" class="form-control" />
                             <span asp-validation-for="Picture" class="text-danger"></span>
-                            <div><input class="btn btn-default" type="file" name="file" style="float:left;" /><input class="btn btn-primary" type="button" style="float:right;" id="btnpicture" value="上传" /></div>
+                            <div><input class="btn btn-default" type="file" name="file" style="float:left;" id="filepicture" /><input class="btn btn-primary" type="button" style="float:right;" id="btnpicture" value="上传" /></div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -130,6 +130,7 @@
                             <label asp-for="MouseMovePicture" class="control-label"></label>
                             <input asp-for="MouseMovePicture" class="form-control" />
                             <span asp-validation-for="MouseMovePicture" class="text-danger"></span>
+                            <div><input class="btn btn-default" type="file" name="filemousemovepicture" style="float:left;" id="filemousemovepicture" /><input class="btn btn-primary" type="button" style="float:right;" id="btnmousemovepicture" value="上传" /></div>
                         </div>
                     </div>
                 </div>
@@ -167,7 +168,68 @@
     </div>
     @section Scripts{
         <script>
+            //上传照片
             $("#btnpicture").click(function () {
+                var fileUpload = $("#filepicture").get(0);
+                var files = fileUpload.files;
+                var data = new FormData();
+                data.append(files[0].name, files[0]);
+
+                $.ajax({
+                    url: "/Image/UploadOnlyImage",
+                    type: "post",
+                    data: data,
+                    /**
+                    *必须false才会自动加上正确的Content-Type
+                    */
+                    contentType: false,
+                    /**
+                    * 必须false才会避开jQuery对 formdata 的默认处理
+                    * XMLHttpRequest会对 formdata 进行正确的处理
+                    */
+                    processData: false,
+                    dataType: "json",
+                    success: function (data) {
+                       
+                        //var obj = JSON.parse(data);
+                        $("#Picture").val(data.msg);
+                    },
+                    error: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+
+            //上传鼠标滑过照片
+            $("#btnmousemovepicture").click(function () {
+                var fileUpload = $("#filemousemovepicture").get(0);
+                var files = fileUpload.files;
+                var data = new FormData();
+                data.append(files[0].name, files[0]);
+
+                $.ajax({
+                    url: "/Image/UploadOnlyImage",
+                    type: "post",
+                    data: data,
+                    /**
+                    *必须false才会自动加上正确的Content-Type
+                    */
+                    contentType: false,
+                    /**
+                    * 必须false才会避开jQuery对 formdata 的默认处理
+                    * XMLHttpRequest会对 formdata 进行正确的处理
+                    */
+                    processData: false,
+                    dataType: "json",
+                    success: function (data) {
+                        //alert(data);
+                        //var obj = JSON.parse(data);
+                        $("#MouseMovePicture").val(data.msg);
+                    },
+                    error: function (data) {
+                        alert(data);
+                    }
+                });
             });
         </script>
     }

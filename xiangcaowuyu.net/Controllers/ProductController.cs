@@ -66,7 +66,7 @@ namespace xiangcaowuyu.net.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("AddProduct","Product");
+                return AddProduct(product);
             }
             if (productHelper.SaveProduct(product) == "1")
             {

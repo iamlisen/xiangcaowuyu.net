@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="~/css/responsive.css" />
     <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-table-develop/dist/bootstrap-table.css" />
+    @RenderSection("Styles",false)
 </head>
 <body>@*style="background-image:url(/images/background.jpg);background-repeat:round;"*@
     <div class="container">
@@ -68,6 +69,9 @@
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/common.js" asp-append-version="true"></script>
     <script src="~/js/jstree.min.js" asp-append-version="true"></script>

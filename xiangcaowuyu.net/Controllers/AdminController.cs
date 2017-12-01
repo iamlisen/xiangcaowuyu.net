@@ -11,6 +11,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using xiangcaowuyu.net.Public;
 
 namespace xiangcaowuyu.net.Controllers
 {
@@ -44,7 +45,7 @@ namespace xiangcaowuyu.net.Controllers
             string userName = HttpContext.Request.Form["username"].ToString();
             string passWord = HttpContext.Request.Form["password"].ToString();
             string verifyCode = HttpContext.Request.Form["verifycode"].ToString();
-            if (userName != "test" || passWord != "test")
+            if (userName != ConfigManager.GetConfig("userName") || passWord !=ConfigManager.GetConfig("password"))
             {
                 result = "用户名或密码不正确";
                 return result;

@@ -71,13 +71,14 @@ namespace xiangcaowuyu.net.Models.Entity
         /// </summary>
         [Display(Name = "邮费")]
         [DataType(DataType.Text)]
-        [Range(0,5)]
+       
         public decimal ExpressFee { get; set; }
 
         /// <summary>
         /// 推荐等级
         /// </summary>
         [Display(Name = "推荐等级")]
+        [Range(0, 5)]
         [Required]
         public int HotLevel { get; set; }
 

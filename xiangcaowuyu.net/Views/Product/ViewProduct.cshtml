@@ -1,66 +1,15 @@
 ﻿@model xiangcaowuyu.net.Models.Entity.Product
+
 @{
     ViewData["Title"] = "ViewProduct";
 }
+@section Styles{ 
+    <link rel="stylesheet" href="~/lib/jquery-enlargement/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="~/lib/jquery-enlargement/dist/zoomify.css" />
+}
 <div style="text-align:center;">
-    <h4 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size:24px;color:deeppink;">@Model.ProductName</h4>
+    <h4 style="text-align:center;">@Html.DisplayNameFor(model => model.ProductName)</h4>
     <hr />
-    <div class="container">
-        @* 第一行开始 *@
-        <div class="row" style="text-align:left;">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ProductCode" class="control-label"></label>
-                    <input asp-for="ProductCode" class="form-control" />
-                    <span asp-validation-for="ProductCode" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6" style="text-align:left;">
-                <div class="form-group">
-                    <label asp-for="ProductName" class="control-label"></label>
-                    <input asp-for="ProductName" class="form-control" />
-                    <span asp-validation-for="ProductName" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        @* 第一行结束 *@
-        @* 第二行开始 *@
-        <div class="row" style="text-align:left;">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Price" class="control-label"></label>
-                    <input asp-for="Price" class="form-control" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="TaoBaoUrl" class="control-label"></label>
-                    <input asp-for="TaoBaoUrl" class="form-control" />
-                    <span asp-validation-for="TaoBaoUrl" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        @* 第二行结束 *@
-        @* 第三行开始 *@
-        <div class="row" style="text-align:left;">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="IsFreeExpress" class="control-label"></label>
-                    <input asp-for="IsFreeExpress" class="form-control" />
-                    <span asp-validation-for="IsFreeExpress" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ExpressFee" class="control-label"></label>
-                    <input asp-for="ExpressFee" class="form-control" />
-                    <span asp-validation-for="ExpressFee" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        @* 第三行结束*@
-    </div>
     <dl class="dl-horizontal">
         @Html.Raw(Model.ProductContent);
     </dl>
@@ -69,3 +18,6 @@
     <a asp-action="EditProduct" asp-route-id="@Model.ID" class="btn btn-success">编辑产品</a> |
     <a asp-action="Index" class="btn btn-primary">返回列表</a>
 </div>
+@section Scripts{ 
+    <script src="~/lib/jquery-enlargement/dist/zoomify.js"></script>
+}

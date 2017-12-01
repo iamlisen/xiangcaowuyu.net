@@ -11,6 +11,11 @@ namespace xiangcaowuyu.net.Public
     public class SysConfig
     {
         public string SysName { get; set; }
+        public string QQ { get; set; }
+        public string Email { get; set; }
+        public string weibo { get; set; }
+        public string userName { get; set; }
+        public string password { get; set; }
     }
 
     public static class ConfigManager

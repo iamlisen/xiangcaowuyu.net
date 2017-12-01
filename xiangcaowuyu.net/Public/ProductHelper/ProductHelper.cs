@@ -33,7 +33,7 @@ namespace xiangcaowuyu.net.Public.ProductHelper
 
         public List<Product> GetProductIndex()
         {
-            return sqlDbContext.Products.OrderByDescending(e => e.CreateTime).Take(9).ToList();
+            return sqlDbContext.Products.OrderByDescending(e => e.CreateTime).Take(8).ToList();
         }
 
         /// <summary>
