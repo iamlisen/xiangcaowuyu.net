@@ -10,10 +10,10 @@
 }
 /*右侧悬浮icon*/
 .side-bar {
-	width: 66px;
+	width: 40px;
 	position: fixed;
 	bottom: 20px;
-	left: 25px;
+	left: 0px;
 	font-size: 0;
 	line-height: 0;
 	z-index: 100;

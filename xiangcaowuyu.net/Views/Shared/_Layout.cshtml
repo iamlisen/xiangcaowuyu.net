@@ -20,9 +20,20 @@
     <link rel="stylesheet" href="~/css/responsive.css" />
     <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-table-develop/dist/bootstrap-table.css" />
-    @RenderSection("Styles",false)
+    @RenderSection("Styles", false)
 </head>
-<body>@*style="background-image:url(/images/background.jpg);background-repeat:round;"*@
+<body style="background-image:url(/images/background.gif);background-repeat:round;">
+    <div id="toubiao" style="text-align:center;">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="86%"><img src="/images/kids.gif" width="15" height="14"/>FACE栏目可以找些"洋葱头"或叫"白馒头"的表情么FACE栏目可以找些"洋葱头"或叫"白馒头"的表情么
+                    <a style="cursor:grabbing" onClick="document.getElementById('toubiao').style.display='none';">
+                        <img src="/images/close.gif" width=84 height=11 hspace="6" border=0>
+                    </a>
+                </td>                
+            </tr>
+        </table>
+    </div>
     <div class="container">
         <div class="header-inner">
             <div class="col-sm-3 col-xs-3 header-left">
