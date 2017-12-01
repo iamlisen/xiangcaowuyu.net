@@ -16,6 +16,7 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace xiangcaowuyu.net
 {
@@ -75,6 +76,7 @@ namespace xiangcaowuyu.net
                 EnableDirectoryBrowsing = true,
                 EnableDefaultFiles = true
             });
+          
             app.UseAuthentication();
             app.UseMvc(routes =>
             {

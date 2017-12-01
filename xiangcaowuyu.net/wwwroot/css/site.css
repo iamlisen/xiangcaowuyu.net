@@ -3469,8 +3469,8 @@ div.dioprogress_size_l {
     bottom: 90px;
     cursor: pointer;
     z-index: 99998;
-    right: 50%;
-    margin-right: -680px;
+    right: 0;
+    margin-right: 0;
 }
 
     /* 小火箭悬停特效 */

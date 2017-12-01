@@ -11,6 +11,20 @@
     <link href="~/lib/scroller/css/own.css" rel="stylesheet" type="text/css" />
 
 }
+@section Header{ 
+<div id="toubiao" style="text-align:center;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="86%">
+                <img src="/images/kids.gif" width="15" height="14" />本站庆祝开业，全场满100包邮，全场商品一律九折优惠。
+                <a style="cursor:grabbing" onClick="document.getElementById('toubiao').style.display = 'none'; $.cookie('isAdClose', 'true', { expires:7 })">
+                    <img src="/images/close.gif" width=84 height=11 hspace="6" border=0>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+}
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -129,7 +143,7 @@
                         </div>
                     }
                     <div class="viewmore">
-                        <div class="btn"><a href="/Product/Index">查看所有产品</a></div>
+                        <div class="btn"><a href="/Product/List">查看所有产品</a></div>
                     </div>
                 </div>
             </div>
@@ -206,6 +220,9 @@
             $("button[name='btnweidian']").click(function () {
                 window.location.href = $(this)[0].id;
             });
+            if ($.cookie('isAdClose') == 'true') {
+                setTimeout(function () { $("#toubiao").hide('slow') }, 5000);
+            }
         });
     </script>
     <script type="application/javascript" src="~/js/jquery.mgang.small2big.js"></script>

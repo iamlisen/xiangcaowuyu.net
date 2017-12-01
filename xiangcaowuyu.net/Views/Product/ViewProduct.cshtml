@@ -3,32 +3,33 @@
 @{
     ViewData["Title"] = Model.ProductName;
 }
-@section Styles{ 
+@section Styles{
     <style>
-        .dl-horizontal p span img{
-            width:200px;
-            height:200px;
-        } 
+        div div p span img {
+            height: 400px;
+        }
     </style>
     <link rel="stylesheet" href="~/lib/jquery-enlargement/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="~/lib/jquery-enlargement/dist/zoomify.css" />
 }
-<div style="text-align:center;">
+<div style="text-align:center;border:solid;border-color:chartreuse;border-width:thin;padding:5px;margin-bottom:15px;">
     <h4 style="text-align:center;">@Model.ProductName</h4>
     <hr />
-    <dl class="dl-horizontal">
-        @Html.Raw(Model.ProductContent)
-    </dl>
+    <div style="border:solid;border-color:darkseagreen;border-width:thin;padding:5px;">
+        <div >
+            @Html.Raw(Model.ProductContent)
+        </div>
+    </div>
 </div>
 <div style="text-align:center">
     <a asp-action="EditProduct" asp-route-id="@Model.ID" class="btn btn-success">编辑产品</a> |
-    <a asp-action="Index" class="btn btn-primary">返回列表</a>
+    <a asp-action="List" class="btn btn-primary">返回列表</a>
 </div>
-@section Scripts{ 
+@section Scripts{
     <script src="~/lib/jquery-enlargement/dist/zoomify.js"></script>
-   <script>
-       $(function () {
-           $('.dl-horizontal p span img').zoomify();
-       });
+    <script>
+        $(function () {
+            $(' div div p span img').zoomify();
+        });
     </script>
 }

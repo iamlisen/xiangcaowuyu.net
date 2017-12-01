@@ -99,5 +99,18 @@ namespace xiangcaowuyu.net.Controllers
             Product product = productHelper.GetProduct(id);
             return View(product);
         }
+
+        public ActionResult List(int limit = 8, int offset = 0)
+        {
+            var rows = productHelper.GetProductPager(limit, offset);
+            ViewBag.ProductList = rows;
+            return View();
+        }
+
+        public ActionResult GetDataList(int limit = 8, int offset =0)
+        {
+            var rows = productHelper.GetProductPager(limit, offset);
+            return Json(new { rows=rows},new JsonSerializerSettings());
+        }
     }
 }

@@ -9,9 +9,10 @@
     <meta charset="utf-8" />
     <title>@ConfigManager.GetConfig("SysName")</title>
     <script src="~/lib/jquery/dist/jquery.js"></script>
-    <link href="~/lib/bootstrap/dist/css/font-awesome.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.css" />
+
     <link href="~/css/login.css" rel="stylesheet" />
     <script src="~/js/plugins/jquery.md5.js"></script>
     <script src="~/js/plugins/cookie/jquery.cookie.js"></script>
@@ -23,19 +24,20 @@
     <![endif]-->
     <script>
         $(function () {
-            $(".wrap").css("height", window.outerHeight );
+            $(".wrap").css("height", window.outerHeight);
         });
     </script>
 </head>
-<body style="height:100%;">
+<body>
     <div class="wrap" style="width:100%;height:100%;">
-        <div class="container">
-            <fieldset class="box">
-                <legend align="center" style="font-size:20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">请选择发布操作</legend>
-                <dl class="form">
-                    <dd><a class="btn btn-success" href="/Product/AddProduct" /><i class="fa fa-pencil" aria-hidden="true"></i>发布商品</dd>
-                </dl>
-            </fieldset>
+        <div class="container" style="height:auto;">
+            <h4 align="center" style="margin-bottom:25px;font-size:20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">请选择发布操作</h4>
+            <div class="row" style="text-align:center;">
+                <div class="col-md-12">
+                    <a class="btn btn-success" href="/Product/AddProduct"><i class="fa fa-pencil" aria-hidden="true"></i>发布商品</a>
+                    <a style="margin-left:15px;" class="btn btn-success" href="/Home/Index"><i class="fa fa-home" aria-hidden="true"></i>返回首页</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
