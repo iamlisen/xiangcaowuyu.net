@@ -89,19 +89,19 @@
                             <div class="item">
                                 <div class="product-thumb">
                                     <div class="image product-imageblock">
-                                        <a href="#"> <img src="~/UploadImage/@product.Picture" alt="@product.ProductName" title="@product.ProductContent" class="img-responsive"> <img src="~/UploadImage/@product.MouseMovePicture" alt="@product.ProductName" title="@product.ProductContent" class="img-responsive"> </a>
+                                        <a asp-controller="Product" asp-action="ViewProduct" asp-route-id="@product.ID" target="_blank"> <img src="~/UploadImage/@product.Picture" alt="@product.ProductName" title="@product.ProductName" class="img-responsive"> <img src="~/UploadImage/@product.MouseMovePicture" alt="@product.ProductName" title="@product.ProductName" class="img-responsive"> </a>
                                         <ul class="button-group">
                                             <li>
                                                 <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="添加心愿单"><i class="fa fa-heart-o"></i></button>
                                             </li>
                                             <li>
-                                                <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="加入对比"><i class="fa fa-exchange"></i></button>
+                                                <button type="button" id="@product.WeiDianUrl" name="btnweidian" class="compare" data-toggle="tooltip" data-placement="top" title="" data-original-title="微店购买"><i class="fa fa-exchange"></i></button>
                                             </li>
                                             <li>
-                                                <button id="@product.ID" name="btnpreview" type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="快速预览"><i class="fa fa-eye"></i></button>
+                                                <button id="@product.TaoBaoUrl" name="btntaobao" type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="" data-original-title="淘宝购买"><i class="fa fa-eye"></i></button>
                                             </li>
                                             <li>
-                                                <a href="@product.TaoBaoUrl" target="_blank" class="addtocart-btn" title="淘宝购买"> 点击淘宝购买 </a>
+                                                <a asp-controller="Product" asp-action="ViewProduct" asp-route-id="@product.ID" target="_blank" class="addtocart-btn" title="查看详情"> 点击查看详情 </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -200,8 +200,13 @@
 @section Scripts{
     <script>
         $(function () {
-            $("button[name='btnpreview']").click(function () {
-                window.location.href = "/Product/ViewProduct/" + $(this)[0].id;
+            //淘宝购买
+            $("button[name='btntaobao']").click(function () {
+                window.location.href = $(this)[0].id;
+            });
+            //微店购买
+            $("button[name='btnweidian']").click(function () {
+                window.location.href = $(this)[0].id;
             });
         });
     </script>

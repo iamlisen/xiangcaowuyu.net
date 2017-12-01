@@ -18,28 +18,28 @@ namespace xiangcaowuyu.net.Models.Entity
         /// 产品编号
         /// </summary>
         [Display(Name = "产品编号")]
-        [Required]
+        [Required(ErrorMessage ="请输入产品编号")]
         public string ProductCode { get; set; }
 
         /// <summary>
         /// 产品名称
         /// </summary>
         [Display(Name = "产品名称")]
-        [Required]
+        [Required(ErrorMessage ="请输入产品名称")]
         public string ProductName { get; set; }
 
         /// <summary>
         /// 产品描述
         /// </summary>
         [Display(Name = "产品描述")]
-        [Required]
+        [Required(ErrorMessage ="请输入产品描述")]
         public string ProductContent { get; set; }
 
         /// <summary>
         /// 产品价格
         /// </summary>
         [Display(Name = "产品价格")]
-        [Required]
+        [Required(ErrorMessage ="请输入产品价格")]
         public decimal Price { get; set; }
 
         /// <summary>
@@ -71,22 +71,21 @@ namespace xiangcaowuyu.net.Models.Entity
         /// </summary>
         [Display(Name = "邮费")]
         [DataType(DataType.Text)]
-       
         public decimal ExpressFee { get; set; }
 
         /// <summary>
         /// 推荐等级
         /// </summary>
         [Display(Name = "推荐等级")]
-        [Range(0, 5)]
-        [Required]
+        [Range(0, 5,ErrorMessage ="范围值应该介于0~5之间")]
+        [Required(ErrorMessage ="请输入推荐等级")]
         public int HotLevel { get; set; }
 
         /// <summary>
         /// 产品图片
         /// </summary>
         [Display(Name = "产品图片")]
-        [Required]
+        [Required(ErrorMessage ="请输入产品图片")]
         public string Picture { get; set; }
 
         /// <summary>
@@ -99,9 +98,12 @@ namespace xiangcaowuyu.net.Models.Entity
         /// 淘宝链接
         /// </summary>
         [Display(Name = "淘宝链接")]
-        [Required]
+        [Required(ErrorMessage ="淘宝链接不能为空")]
         public string TaoBaoUrl { get; set; }
 
+        [Display(Name ="微店链接")]
+        [Required(ErrorMessage ="微店链接不能为空")]
+        public string WeiDianUrl { get; set; }
         /// <summary>
         /// 创建日期
         /// </summary>

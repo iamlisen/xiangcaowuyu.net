@@ -46,11 +46,12 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="TaoBaoUrl" class="control-label"></label>
-                            <input asp-for="TaoBaoUrl" class="form-control" />
-                            <span asp-validation-for="TaoBaoUrl" class="text-danger"></span>
+                            <label asp-for="CreateTime" class="control-label"></label>
+                            <input asp-for="CreateTime" class="form-control" />
+                            <span asp-validation-for="CreateTime" class="text-danger"></span>
                         </div>
                     </div>
+
                 </div>
                 @* 第二行结束 *@
                 @* 第三行开始 *@
@@ -93,8 +94,24 @@
                 @* 第四行结束 *@
                 @* 第五行开始 *@
                 <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="TaoBaoUrl" class="control-label"></label>
+                                <input asp-for="TaoBaoUrl" class="form-control" />
+                                <span asp-validation-for="TaoBaoUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="WeiDianUrl" class="control-label"></label>
+                                <input asp-for="WeiDianUrl" class="form-control" />
+                                <span asp-validation-for="WeiDianUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 @* 第五行结束 *@
                 @* 第六行开始 *@
@@ -134,11 +151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group" style="display:none;">
-                    <label asp-for="CreateTime" class="control-label"></label>
-                    <input asp-for="CreateTime" class="form-control" />
-                    <span asp-validation-for="CreateTime" class="text-danger"></span>
-                </div>
+
                 @* 第七行结束 *@
                 @* 第八行开始 *@
                 <div class="row">
@@ -190,7 +203,7 @@
                     processData: false,
                     dataType: "json",
                     success: function (data) {
-                       
+
                         //var obj = JSON.parse(data);
                         $("#Picture").val(data.msg);
                     },
@@ -230,6 +243,11 @@
                         alert(data);
                     }
                 });
+            });
+
+            laydate.render({
+                elem: '#CreateTime', //指定元素
+                value: new Date()
             });
         </script>
     }

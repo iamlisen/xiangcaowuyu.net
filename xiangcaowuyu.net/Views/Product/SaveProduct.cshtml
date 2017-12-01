@@ -1,4 +1,6 @@
-﻿
+﻿@using xiangcaowuyu.net.Public;
+@using xiangcaowuyu.net.Models.Entity;
+@model xiangcaowuyu.net.Models.Entity.Product;
 @{
     Layout = null;
 }
@@ -8,9 +10,40 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>SaveProduct</title>
+    <title>@ConfigManager.GetConfig("SysName")</title>
+    <meta http-equiv="refresh" content="5;url=/Home/Index" />
+    <style type="text/css">
+        <!--
+        body, td, th {
+            color: #FFFFFF;
+        }
+
+        body {
+            background-color: #0099CC;
+        }
+
+        .STYLE7 {
+            font-size: 24px;
+            font-family: "微软雅黑";
+        }
+
+        .STYLE9 {
+            font-size: 16px
+        }
+
+        .STYLE12 {
+            font-size: 100px;
+            font-family: "微软雅黑";
+        }
+        -->
+    </style>
 </head>
 <body>
-    保存成功
+    <h4>保存成功，5秒之后自动跳转到首页</h4>
+    <script language="javascript" type="text/javascript">
+            setTimeout(function () { this.location.href = "/Home/Index" }, 5000);
+    </script>
+    <span class="STYLE12">&nbsp;╰( ´・ω・)つ──☆✿✿✿</span>
+   
 </body>
 </html>

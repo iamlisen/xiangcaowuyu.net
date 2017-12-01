@@ -31,13 +31,15 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/layDate/laydate/laydate.js"></script>
     <script type="text/javascript">
         //初始化checkbox为bootstrapSwitch
-        $("input[type='checkbox']").bootstrapSwitch({
-            labelWidth: "auto",
-            onText: "是",
-            offText: "否",
-            
+        $(function () {
+            $("input[type='checkbox']").bootstrapSwitch({
+                labelWidth: "auto",
+                onText: "是",
+                offText: "否"
+            });
         });
     </script>
     @RenderSection("Scripts", false);

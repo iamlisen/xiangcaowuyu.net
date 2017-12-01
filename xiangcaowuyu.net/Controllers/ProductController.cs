@@ -70,11 +70,11 @@ namespace xiangcaowuyu.net.Controllers
             }
             if (productHelper.SaveProduct(product) == "1")
             {
-                return View();
+                return View(product);
             }
             else
             {
-                return RedirectToAction("AddProduct", "Product");
+                return AddProduct(product);
             }
         }
 

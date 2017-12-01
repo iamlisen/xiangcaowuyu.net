@@ -10,6 +10,8 @@
     <title>@ConfigManager.GetConfig("SysName")</title>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <link href="~/lib/bootstrap/dist/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
     <link href="~/css/login.css" rel="stylesheet" />
     <script src="~/js/plugins/jquery.md5.js"></script>
     <script src="~/js/plugins/cookie/jquery.cookie.js"></script>
@@ -29,9 +31,9 @@
     <div class="wrap" style="width:100%;height:100%;">
         <div class="container">
             <fieldset class="box">
-                <legend style="text-align:center;">请选择发布操作</legend>
+                <legend align="center" style="font-size:20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">请选择发布操作</legend>
                 <dl class="form">
-                    <dd><a href="/Product/AddProduct" />发布商品</dd>
+                    <dd><a class="btn btn-success" href="/Product/AddProduct" /><i class="fa fa-pencil" aria-hidden="true"></i>发布商品</dd>
                 </dl>
             </fieldset>
         </div>
