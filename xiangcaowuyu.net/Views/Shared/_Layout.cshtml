@@ -12,7 +12,7 @@
         }
         else
         {
-            @string.Format("{0} - {1}", ViewData["Title"], ConfigManager.GetConfig("SysName"));
+            string.Format("{0} - {1}", ViewData["Title"], ConfigManager.GetConfig("SysName"));
         }
     </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.css" />
     @RenderSection("Styles", false)
 </head>
-@RenderSection("header",false);
+@RenderSection("header",false)
 <body >@* style="background-image:url(/images/background.gif);background-repeat:round;" *@
     <div class="container">
         <div class="header-inner">
