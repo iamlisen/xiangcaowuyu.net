@@ -15,5 +15,6 @@ namespace xiangcaowuyu.net.Public
         public DbSet<Menu> Menu { get; set; }
         public DbSet<Banner> Banner { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Article> Articles { get; set; }
     }
 }

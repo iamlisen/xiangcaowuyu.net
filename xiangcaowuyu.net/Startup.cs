@@ -17,6 +17,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.StaticFiles;
+using xiangcaowuyu.net.Public.ArticleHelper;
 
 namespace xiangcaowuyu.net
 {
@@ -45,7 +46,8 @@ namespace xiangcaowuyu.net
             services.AddDbContext<SqlDbContext>(options => options.UseSqlServer(sqlConnectionString, b => b.UseRowNumberForPaging()));
             services.AddScoped<IMenuHelper, MenuHelper>()
                 .AddScoped<IBannerHelper, BannerHelper>()
-                .AddScoped<IProductHelper, ProductHelper>();
+                .AddScoped<IProductHelper, ProductHelper>()
+                .AddScoped<IArticleHelper,ArticleHelper>();
 
             services.Configure<FormOptions>(x =>
             {
