@@ -16,6 +16,8 @@ namespace xiangcaowuyu.net.Public
         public string weibo { get; set; }
         public string userName { get; set; }
         public string password { get; set; }
+        public string keywords { get; set; }
+        public string description { get; set; }
     }
 
     public static class ConfigManager
