@@ -67,6 +67,7 @@ namespace xiangcaowuyu.net.Controllers
             UserInfo.UserName = userName;
             UserInfo.LoginTime = DateTime.Now;
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+            HttpContext.Response.Cookies.Append("islogin","true");
             return result;
         }
 

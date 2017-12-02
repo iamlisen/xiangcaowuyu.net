@@ -12,24 +12,40 @@
     <link rel="stylesheet" href="~/lib/jquery-enlargement/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="~/lib/jquery-enlargement/dist/zoomify.css" />
 }
-<div style="text-align:center;border:solid;border-color:chartreuse;border-width:thin;padding:5px;margin-bottom:15px;">
-    <h4 style="text-align:center;">@Model.ProductName</h4>
+<div class="container">
+    <h2 style="text-align:center;">@Model.ProductName</h2>
     <hr />
-    <div style="border:solid;border-color:darkseagreen;border-width:thin;padding:5px;">
-        <div >
-            @Html.Raw(Model.ProductContent)
+    <div class="row">
+        <div class="col-md-12">
+            <div style="border:solid;border-color:darkseagreen;border-width:thin;padding:5px;margin-bottom:15px;">
+                <div>
+                    @Html.Raw(Model.ProductContent)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:15px;">
+        <div class="col-md-12">
+            <div style="text-align:center">
+                <a href="@Model.TaoBaoUrl" target="_blank" class="btn btn-success" id="taobaourl">淘宝购买</a> |
+                <a href="@Model.WeiDianUrl" target="_blank" class="btn btn-default" id="weidianurl">微店购买</a> |               
+                <a asp-action="List" class="btn btn-primary" id="reback">返回列表</a>
+            </div>
         </div>
     </div>
 </div>
-<div style="text-align:center">
-    <a asp-action="EditProduct" asp-route-id="@Model.ID" class="btn btn-success">编辑产品</a> |
-    <a asp-action="List" class="btn btn-primary">返回列表</a>
-</div>
+<input type="hidden" id="productid" value="@Model.ID"/>
+
 @section Scripts{
     <script src="~/lib/jquery-enlargement/dist/zoomify.js"></script>
     <script>
         $(function () {
             $(' div div p span img').zoomify();
+            if ($.cookie('islogin') == 'true') {
+                $("#weidianurl").after(" | <a href='/Peoduct/EditProduct/" + $("#productid").val() + "'" + " class='btn btn-success'>编辑产品</a>");
+            } else {
+                $("#weidianurl").after(" | ");
+            }
         });
     </script>
 }
