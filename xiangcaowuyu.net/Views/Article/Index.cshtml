@@ -1,59 +1,16 @@
 ﻿@model IEnumerable<xiangcaowuyu.net.Models.Entity.Article>
-
+@using xiangcaowuyu.net.Models.Entity;
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "文章";
+    List<Article> list  = Model as List<Article>;
 }
-
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Context)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PostTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsHot)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Type)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container">
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Context)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsHot)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row" style="margin-bottom:5px;">
+    <div style="float:left;"><img src="/UploadImage/Random/img1.jpg" style="width:250px;height:200px;"></div>
+    <div style="float:left;">
+
+        </div>
+    </div>
+    }
+</div>
