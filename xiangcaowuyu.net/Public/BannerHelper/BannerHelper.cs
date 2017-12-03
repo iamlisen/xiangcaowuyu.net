@@ -16,6 +16,7 @@ namespace xiangcaowuyu.net.Public.BannerHelper
         public List<Banner> GetBanners()
         {
             return sqlDbContext.Banner.ToList<Banner>();
+
         }
     }
 }

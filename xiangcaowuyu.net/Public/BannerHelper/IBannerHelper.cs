@@ -9,5 +9,6 @@ namespace xiangcaowuyu.net.Public.BannerHelper
     public interface IBannerHelper
     {
         List<Banner> GetBanners();
+
     }
 }
