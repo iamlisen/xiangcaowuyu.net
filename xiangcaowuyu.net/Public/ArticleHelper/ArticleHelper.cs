@@ -54,6 +54,16 @@ namespace xiangcaowuyu.net.Public.ArticleHelper
         }
 
         /// <summary>
+        /// 根据ID获取
+        /// </summary>
+        /// <returns>The article.</returns>
+        /// <param name="id">Identifier.</param>
+        public Article GetArticle(string id)
+        {
+            return sqlDbContext.Articles.Where(e => e.ID == id).FirstOrDefault<Article>();
+        }
+
+        /// <summary>
         /// 获取列表
         /// </summary>
         /// <param name="index"></param>

@@ -27,9 +27,10 @@ namespace xiangcaowuyu.net.Controllers
         }
 
         // GET: Article/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            Article article = articleHelper.GetArticle(id);
+            return View(article);
         }
 
         // GET: Article/Create
@@ -56,7 +57,7 @@ namespace xiangcaowuyu.net.Controllers
         }
 
         // GET: Article/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
             return View();
         }
@@ -64,12 +65,11 @@ namespace xiangcaowuyu.net.Controllers
         // POST: Article/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, IFormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -79,15 +79,21 @@ namespace xiangcaowuyu.net.Controllers
         }
 
         // GET: Article/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
+            if (articleHelper.DeleteArticle(id))
+            {
+                ViewBag.IsDeleted = "删除成功";
+            }else{
+                ViewBag.IsDeleted = "删除失败";
+            }
             return View();
         }
 
         // POST: Article/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string id, IFormCollection collection)
         {
             try
             {
