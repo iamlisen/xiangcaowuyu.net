@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using xiangcaowuyu.net.Models.Entity;
 using xiangcaowuyu.net.Public.ArticleHelper;
 using xiangcaowuyu.net.Public.MenuHelper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace xiangcaowuyu.net.Controllers
 {
@@ -34,6 +35,7 @@ namespace xiangcaowuyu.net.Controllers
         }
 
         // GET: Article/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -42,12 +44,12 @@ namespace xiangcaowuyu.net.Controllers
         // POST: Article/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(IFormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -57,6 +59,7 @@ namespace xiangcaowuyu.net.Controllers
         }
 
         // GET: Article/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(string id)
         {
             return View();
@@ -65,6 +68,7 @@ namespace xiangcaowuyu.net.Controllers
         // POST: Article/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(string id, IFormCollection collection)
         {
             try
@@ -79,6 +83,7 @@ namespace xiangcaowuyu.net.Controllers
         }
 
         // GET: Article/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(string id)
         {
             if (articleHelper.DeleteArticle(id))
@@ -93,6 +98,7 @@ namespace xiangcaowuyu.net.Controllers
         // POST: Article/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(string id, IFormCollection collection)
         {
             try
