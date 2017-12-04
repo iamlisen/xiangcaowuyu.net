@@ -16,7 +16,8 @@ namespace xiangcaowuyu.net.Public.Attribute
     /// <summary>
     /// 实现伪静态
     /// </summary>
-    public class StaticFileHandlerFilterAttribute : IActionFilter
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
+    public class StaticFileHandlerFilterAttribute : ActionFilterAttribute
     {
         public string Key
         {
@@ -26,7 +27,7 @@ namespace xiangcaowuyu.net.Public.Attribute
         /// 动作执行后
         /// </summary>
         /// <param name="context"></param>
-        public void OnActionExecuted(ActionExecutedContext context)
+        public override void OnActionExecuted(ActionExecutedContext context)
         {
             //获取结果
             IActionResult actionResult = context.Result;
@@ -42,7 +43,6 @@ namespace xiangcaowuyu.net.Public.Attribute
                 result.EnsureSuccessful(originalLocations: null);
                 var view = result.View;
                 StringBuilder builder = new StringBuilder();
-
                 using (var writer = new StringWriter(builder))
                 {
                     var viewContext = new ViewContext(
@@ -52,13 +52,11 @@ namespace xiangcaowuyu.net.Public.Attribute
                         viewResult.TempData,
                         writer,
                         option.Value.HtmlHelperOptions);
-
                     view.RenderAsync(viewContext).GetAwaiter().GetResult();
                     //这句一定要调用，否则内容就会是空的
                     writer.Flush();
                 }
                 //按照规则生成静态文件名称
-                string area = context.RouteData.Values["area"].ToString().ToLower();
                 string controllerName = context.RouteData.Values["controller"].ToString().ToLower();
                 string actionName = context.RouteData.Values["action"].ToString().ToLower();
                 string id = context.RouteData.Values.ContainsKey(Key) ? context.RouteData.Values[Key].ToString() : "";
@@ -66,14 +64,13 @@ namespace xiangcaowuyu.net.Public.Attribute
                 {
                     id = context.HttpContext.Request.Query[Key];
                 }
-                string devicedir = Path.Combine(AppContext.BaseDirectory, "wwwroot", area);
+                string devicedir = Path.Combine(AppContext.BaseDirectory, "wwwroot");
                 if (!Directory.Exists(devicedir))
                 {
                     Directory.CreateDirectory(devicedir);
                 }
-
                 //写入文件
-                string filePath = Path.Combine(AppContext.BaseDirectory, "wwwroot", area, controllerName + "-" + actionName + (string.IsNullOrEmpty(id) ? "" : ("-" + id)) + ".html");
+                string filePath = Path.Combine(AppContext.BaseDirectory, "wwwroot", controllerName + "-" + actionName + (string.IsNullOrEmpty(id) ? "" : ("-" + id)) + ".html");
                 using (FileStream fs = File.Open(filePath, FileMode.Create))
                 {
                     using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
@@ -93,32 +90,36 @@ namespace xiangcaowuyu.net.Public.Attribute
         /// 动作执行前
         /// </summary>
         /// <param name="context"></param>
-        public void OnActionExecuting(ActionExecutingContext context)
+        public override void OnActionExecuting(ActionExecutingContext context)
         {
             //按照一定的规则生成静态文件的名称，这里是按照area+"-"+controller+"-"+action+key规则生成
             string controllerName = context.RouteData.Values["controller"].ToString().ToLower();
             string actionName = context.RouteData.Values["action"].ToString().ToLower();
-            string area = context.RouteData.Values["area"].ToString().ToLower();
             //这里的Key默认等于id，当然我们可以配置不同的Key名称
             string id = context.RouteData.Values.ContainsKey(Key) ? context.RouteData.Values[Key].ToString() : "";
             if (string.IsNullOrEmpty(id) && context.HttpContext.Request.Query.ContainsKey(Key))
             {
                 id = context.HttpContext.Request.Query[Key];
             }
-            string filePath = Path.Combine(AppContext.BaseDirectory, "wwwroot", area, controllerName + "-" + actionName + (string.IsNullOrEmpty(id) ? "" : ("-" + id)) + ".html");
+            string filePath = Path.Combine(AppContext.BaseDirectory, "wwwroot", controllerName + "-" + actionName + (string.IsNullOrEmpty(id) ? "" : ("-" + id)) + ".html");
             //判断文件是否存在
             if (File.Exists(filePath))
             {
-                //如果存在，直接读取文件
-                using (FileStream fs = File.Open(filePath, FileMode.Open))
+                FileInfo fileInfo = new FileInfo(filePath);
+                TimeSpan timeSpan = DateTime.Now - fileInfo.CreationTime;
+                if (timeSpan.TotalDays <= 1)
                 {
-                    using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+                    //如果存在，直接读取文件
+                    using (FileStream fs = File.Open(filePath, FileMode.Open))
                     {
-                        //通过contentresult返回文件内容
-                        ContentResult contentresult = new ContentResult();
-                        contentresult.Content = sr.ReadToEnd();
-                        contentresult.ContentType = "text/html";
-                        context.Result = contentresult;
+                        using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+                        {
+                            //通过contentresult返回文件内容
+                            ContentResult contentresult = new ContentResult();
+                            contentresult.Content = sr.ReadToEnd();
+                            contentresult.ContentType = "text/html";
+                            context.Result = contentresult;
+                        }
                     }
                 }
             }
