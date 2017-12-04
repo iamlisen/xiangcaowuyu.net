@@ -15,7 +15,7 @@ namespace xiangcaowuyu.net.Controllers
     {
         private readonly IArticleHelper articleHelper;
 
-        public ArticleController(IArticleHelper articleHelper,IMenuHelper menuHelper) : base(menuHelper)
+        public ArticleController(IArticleHelper articleHelper, IMenuHelper menuHelper) : base(menuHelper)
         {
             this.articleHelper = articleHelper;
         }
@@ -45,11 +45,11 @@ namespace xiangcaowuyu.net.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin")]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Article article)
         {
             try
             {
-                // TODO: Add insert logic here
+                articleHelper.InsertArticle(article);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -89,7 +89,9 @@ namespace xiangcaowuyu.net.Controllers
             if (articleHelper.DeleteArticle(id))
             {
                 ViewBag.IsDeleted = "删除成功";
-            }else{
+            }
+            else
+            {
                 ViewBag.IsDeleted = "删除失败";
             }
             return View();

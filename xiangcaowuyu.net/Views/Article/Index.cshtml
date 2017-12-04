@@ -12,12 +12,16 @@
         @foreach (Article article in Model)
         {
             Random random = new Random();
-            string imageIndex = string.Format("img{0}.jpg", random.Next(15));
+            string imageIndex = string.Format("/UploadImage/Random/img{0}.jpg", random.Next(15));
+            @if (!string.IsNullOrEmpty(article.Picture))
+            {
+                imageIndex = string.Format("/UploadImage/{0}",@article.Picture);
+            }
             <div id="post_list_box" class="border_gray">
                 <article id="post-1395" class="archive-list">
                     <figure class="thumbnail box-hide box-show">
                         <a asp-controller="article" asp-action="Details" asp-route-id="@article.ID">
-                            <img src="~/UploadImage/Random/@imageIndex" alt="微软官方跨平台sqlserver连接工具SQL Operations Studio">
+                            <img src="@imageIndex" alt="微软官方跨平台sqlserver连接工具SQL Operations Studio">
                         </a>
                     </figure>
                     <header class="entry-header">

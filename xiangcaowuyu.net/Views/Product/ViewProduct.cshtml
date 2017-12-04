@@ -28,7 +28,7 @@
         <div class="col-md-12">
             <div style="text-align:center">
                 <a href="@Model.TaoBaoUrl" target="_blank" class="btn btn-success" id="taobaourl">淘宝购买</a> |
-                <a href="@Model.WeiDianUrl" target="_blank" class="btn btn-default" id="weidianurl">微店购买</a> |               
+                <a href="@Model.WeiDianUrl" target="_blank" class="btn btn-default" id="weidianurl">微店购买</a>               
                 <a asp-action="List" class="btn btn-primary" id="reback">返回列表</a>
             </div>
         </div>
@@ -42,7 +42,7 @@
         $(function () {
             $(' div div p span img').zoomify();
             if ($.cookie('islogin') == 'true') {
-                $("#weidianurl").after(" | <a href='/Peoduct/EditProduct/" + $("#productid").val() + "'" + " class='btn btn-success'>编辑产品</a>");
+                $("#weidianurl").after(" | <a href='/Peoduct/EditProduct/" + $("#productid").val() + "'" + " class='btn btn-success'>编辑产品</a> | ");
             } else {
                 $("#weidianurl").after(" | ");
             }
