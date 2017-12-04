@@ -64,13 +64,13 @@ namespace xiangcaowuyu.net.Public.Attribute
                 {
                     id = context.HttpContext.Request.Query[Key];
                 }
-                string devicedir = Path.Combine(AppContext.BaseDirectory, "wwwroot");
+                string devicedir = Path.Combine(AppContext.BaseDirectory, "html");
                 if (!Directory.Exists(devicedir))
                 {
                     Directory.CreateDirectory(devicedir);
                 }
                 //写入文件
-                string filePath = Path.Combine(AppContext.BaseDirectory, "wwwroot", controllerName + "-" + actionName + (string.IsNullOrEmpty(id) ? "" : ("-" + id)) + ".html");
+                string filePath = Path.Combine(AppContext.BaseDirectory, "html", controllerName + "-" + actionName + (string.IsNullOrEmpty(id) ? "" : ("-" + id)) + ".html");
                 using (FileStream fs = File.Open(filePath, FileMode.Create))
                 {
                     using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
@@ -101,7 +101,7 @@ namespace xiangcaowuyu.net.Public.Attribute
             {
                 id = context.HttpContext.Request.Query[Key];
             }
-            string filePath = Path.Combine(AppContext.BaseDirectory, "wwwroot", controllerName + "-" + actionName + (string.IsNullOrEmpty(id) ? "" : ("-" + id)) + ".html");
+            string filePath = Path.Combine(AppContext.BaseDirectory, "html", controllerName + "-" + actionName + (string.IsNullOrEmpty(id) ? "" : ("-" + id)) + ".html");
             //判断文件是否存在
             if (File.Exists(filePath))
             {

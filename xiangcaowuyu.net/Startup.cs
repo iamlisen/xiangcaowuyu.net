@@ -18,7 +18,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.StaticFiles;
 using xiangcaowuyu.net.Public.ArticleHelper;
-using Microsoft.AspNetCore.Rewrite;
 
 namespace xiangcaowuyu.net
 {
@@ -48,7 +47,7 @@ namespace xiangcaowuyu.net
             services.AddScoped<IMenuHelper, MenuHelper>()
                 .AddScoped<IBannerHelper, BannerHelper>()
                 .AddScoped<IProductHelper, ProductHelper>()
-                .AddScoped<IArticleHelper, ArticleHelper>();
+                .AddScoped<IArticleHelper,ArticleHelper>();
 
             services.Configure<FormOptions>(x =>
             {
@@ -79,6 +78,7 @@ namespace xiangcaowuyu.net
                 EnableDirectoryBrowsing = true,
                 EnableDefaultFiles = true
             });
+          
             app.UseAuthentication();
             app.UseMvc(routes =>
             {

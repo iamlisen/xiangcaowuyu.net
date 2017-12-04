@@ -9,6 +9,8 @@ using xiangcaowuyu.net.Public.ArticleHelper;
 using xiangcaowuyu.net.Public.MenuHelper;
 using Microsoft.AspNetCore.Authorization;
 using xiangcaowuyu.net.Public.Attribute;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
 
 namespace xiangcaowuyu.net.Controllers
 {
@@ -29,6 +31,7 @@ namespace xiangcaowuyu.net.Controllers
         }
 
         // GET: Article/Details/5
+        [StaticFileHandlerFilter(Key = "id")]
         public ActionResult Details(string id)
         {
             Article article = articleHelper.GetArticle(id);
@@ -46,6 +49,7 @@ namespace xiangcaowuyu.net.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin")]
+        [StaticFileHandlerWriteFilter(Key ="id")]
         public ActionResult Create(Article article)
         {
             try

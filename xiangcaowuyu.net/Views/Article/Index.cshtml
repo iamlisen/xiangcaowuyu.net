@@ -20,13 +20,13 @@
             <div id="post_list_box" class="border_gray">
                 <article id="post-1395" class="archive-list">
                     <figure class="thumbnail box-hide box-show">
-                        <a asp-controller="article" asp-action="Details" asp-route-id="@article.ID">
+                        <a asp-controller="Article" asp-action="Details" asp-route-id="@article.ID">
                             <img src="@imageIndex" alt="@article.Title">
                         </a>
                     </figure>
                     <header class="entry-header">
                         <h2 class="entry-title" style="margin-top:5px;margin-bottom:5px;">
-                            <a asp-controller="article" asp-action="Details" asp-route-id="@article.ID">@article.Title</a>
+                            <a asp-controller="Article" asp-action="Details" asp-route-id="@article.ID">@article.Title</a>
                         </h2>
                     </header>
                     <div class="entry-content">
