@@ -12,7 +12,6 @@ using xiangcaowuyu.net.Public.Attribute;
 
 namespace xiangcaowuyu.net.Controllers
 {
-    [StaticFileHandlerFilter(Key = "id")]
     public class ArticleController : BaseController
     {
         private readonly IArticleHelper articleHelper;
@@ -30,7 +29,6 @@ namespace xiangcaowuyu.net.Controllers
         }
 
         // GET: Article/Details/5
-        [StaticFileHandlerFilter(Key = "id")]
         public ActionResult Details(string id)
         {
             Article article = articleHelper.GetArticle(id);

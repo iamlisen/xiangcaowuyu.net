@@ -48,7 +48,7 @@ namespace xiangcaowuyu.net
             services.AddScoped<IMenuHelper, MenuHelper>()
                 .AddScoped<IBannerHelper, BannerHelper>()
                 .AddScoped<IProductHelper, ProductHelper>()
-                .AddScoped<IArticleHelper,ArticleHelper>();
+                .AddScoped<IArticleHelper, ArticleHelper>();
 
             services.Configure<FormOptions>(x =>
             {
@@ -79,8 +79,6 @@ namespace xiangcaowuyu.net
                 EnableDirectoryBrowsing = true,
                 EnableDefaultFiles = true
             });
-            
-            app.UseRewriter(options);
             app.UseAuthentication();
             app.UseMvc(routes =>
             {
