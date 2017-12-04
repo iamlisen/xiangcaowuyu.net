@@ -21,7 +21,7 @@
                 <article id="post-1395" class="archive-list">
                     <figure class="thumbnail box-hide box-show">
                         <a asp-controller="article" asp-action="Details" asp-route-id="@article.ID">
-                            <img src="@imageIndex" alt="微软官方跨平台sqlserver连接工具SQL Operations Studio">
+                            <img src="@imageIndex" alt="@article.Title">
                         </a>
                     </figure>
                     <header class="entry-header">
@@ -32,10 +32,10 @@
                     <div class="entry-content">
                         <span class="entry-meta" style="margin-top:5px;">
                             <span class="post_cat">
-                                <a href="https://www.lisen.me/database">发布日期</a>
+                                <a href="@article.TaoBaoUrl" class="btn btn-success">淘宝购买</a>
                             </span>
                             <span class="post_spliter">•</span>
-                            <span class="date" title="2017/12/03 00:23">@article.PostTime</span>
+                            <a href="@article.WeiDianUrl" class="date btn btn-primary">微店购买</a>
                         </span>
                         <div class="archive-content">
                             @article.Context
