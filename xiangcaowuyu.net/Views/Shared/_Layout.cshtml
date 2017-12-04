@@ -12,8 +12,10 @@
         }
         else
         {
-            string.Format("{0} - {1}", ViewData["Title"], ConfigManager.GetConfig("SysName"));
+            string title = string.Format("{0} - {1}", ViewData["Title"], ConfigManager.GetConfig("SysName"));
+            @title;
         }
+        
     </title>
     <meta name="keywords" content="@ConfigManager.GetConfig("keywords")" />
     <meta name="description" content="@ConfigManager.GetConfig("description")" />
@@ -26,101 +28,101 @@
 @RenderSection("header", false)
 <body>
     @* style="background-image:url(/images/background.gif);background-repeat:round;" *@
-<div class="container">
-    <div class="header-inner">
-        <div class="col-sm-3 col-xs-3 header-left">
-            <div id="logo">
-                <a href="/Home/Index"><img src="~/images/logo.png" title="E-Commerce" alt="E-Commerce" class="img-responsive"></a>
-            </div>
-        </div>
-        <div class="col-sm-9 col-xs-9 header-right">
-            <nav id="menu" class="navbar" style="margin-bottom:0px;">
-                <div class="nav-inner">
-                    <div class="navbar-collapse pull-left">
-                        <ul class="main-navigation">
-                            @{
-                                string MenuString = "";
-                                var listMenu = ViewData["Menus"] as List<Menu>;
-                            }
-                            @foreach (var item in ViewData["Menus"] as List<Menu>)
-                            {
-                                MenuString += "<li><a href='/" + item.Controller + "/" + item.Action + "'>" + item.Name + "</a></li>";
-                            }
-                            @Html.Raw(@MenuString)
-                        </ul>
-                    </div>
+    <div class="container">
+        <div class="header-inner">
+            <div class="col-sm-3 col-xs-3 header-left">
+                <div id="logo">
+                    <a href="/Home/Index"><img src="~/images/logo.png" title="E-Commerce" alt="E-Commerce" class="img-responsive"></a>
                 </div>
-            </nav>
+            </div>
+            <div class="col-sm-9 col-xs-9 header-right">
+                <nav id="menu" class="navbar" style="margin-bottom:0px;">
+                    <div class="nav-inner">
+                        <div class="navbar-collapse pull-left">
+                            <ul class="main-navigation">
+                                @{
+                                    string MenuString = "";
+                                    var listMenu = ViewData["Menus"] as List<Menu>;
+                                }
+                                @foreach (var item in ViewData["Menus"] as List<Menu>)
+                                {
+                                    MenuString += "<li><a href='/" + item.Controller + "/" + item.Action + "'>" + item.Name + "</a></li>";
+                                }
+                                @Html.Raw(@MenuString)
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
-<div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-        <div class="container" style="font-size:16px;font-family:STXinwei;">
-            <p>&copy; 2017 - @ConfigManager.GetConfig("SysName")&copy;| <a asp-action="Index" asp-controller="Admin">网站后台</a></p>
-            <!-- 右侧小火箭图标返回顶部 -->
-            <div id="shangxia2" style="margin-right:15px;">
-                <span id="gotop1">
-                    <img src="~/images/huojian.svg" alt="返回顶部小火箭">
-                </span>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="container" style="font-size:16px;font-family:STXinwei;">
+                <p>&copy; 2017 - @ConfigManager.GetConfig("SysName")&copy;| <a asp-action="Index" asp-controller="Admin">网站后台</a></p>
+                <!-- 右侧小火箭图标返回顶部 -->
+                <div id="shangxia2" style="margin-right:15px;">
+                    <span id="gotop1">
+                        <img src="~/images/huojian.svg" alt="返回顶部小火箭">
+                    </span>
+                </div>
             </div>
-        </div>
-    </footer>
-</div>
+        </footer>
+    </div>
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/js/common.js" asp-append-version="true"></script>
-<script src="~/js/jstree.min.js" asp-append-version="true"></script>
-<script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
-<script src="~/js/ScrollToPlugin.min.js" asp-append-version="true"></script>
-<script src="~/js/TweenMax.min.js" asp-append-version="true"></script>
-<script src="~/lib/bootstrap-paginator/src/bootstrap-paginator.js"></script>
-<script src="~/lib/bootstrap-table-develop/dist/bootstrap-table.js"></script>
-<script src="~/lib/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
-<script src="~/js/plugins/cookie/jquery.cookie.js"></script>
-@RenderSection("Scripts", required: false)
-<script>
-    $(function () {
-        // 默认速度
-        $("#gotop6").click(function () {
-            TweenMax.to(window, 1, { scrollTo: 0 });
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/common.js" asp-append-version="true"></script>
+    <script src="~/js/jstree.min.js" asp-append-version="true"></script>
+    <script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
+    <script src="~/js/ScrollToPlugin.min.js" asp-append-version="true"></script>
+    <script src="~/js/TweenMax.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-paginator/src/bootstrap-paginator.js"></script>
+    <script src="~/lib/bootstrap-table-develop/dist/bootstrap-table.js"></script>
+    <script src="~/lib/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/js/plugins/cookie/jquery.cookie.js"></script>
+    @RenderSection("Scripts", required: false)
+    <script>
+        $(function () {
+            // 默认速度
+            $("#gotop6").click(function () {
+                TweenMax.to(window, 1, { scrollTo: 0 });
+            });
+
+
+            // 弹跳球式滚动底部 .box2是要滚动地方的id或者锚点
+            $("#gotop5").click(function () {
+                TweenMax.to(window, 2, { scrollTo: ".box2", ease: Bounce.easeOut });
+            });
+
+
+            // 返回顶部，绑定gotop1图标和gotop2文字事件
+            $("#gotop1,#gotop2").click(function (e) {
+                TweenMax.to(window, 1.5, { scrollTo: 0, ease: Expo.easeInOut });
+                var huojian = new TimelineLite();
+                huojian.to("#gotop1", 1, { rotationY: 720, scale: 0.6, y: "+=40", ease: Power4.easeOut })
+                    .to("#gotop1", 1, { y: -1000, opacity: 0, ease: Power4.easeOut }, 0.6)
+                    .to("#gotop1", 1, { y: 0, rotationY: 0, opacity: 1, scale: 1, ease: Expo.easeOut, clearProps: "all" }, "1.4");
+            });
+
+
+            // 以1秒慢快慢的速度滚动顶部
+            $("#gotop3").click(function () {
+                TweenMax.to(window, 1, { scrollTo: 0, ease: Expo.easeInOut });
+            });
+
+            // 以1.5秒快慢快的速度滚动顶部
+            $("#gotop4").click(function () {
+                TweenMax.to(window, 1.5, { scrollTo: 0, ease: SlowMo.ease.config(0.7, 0.7, false) });
+            });
         });
 
-
-        // 弹跳球式滚动底部 .box2是要滚动地方的id或者锚点
-        $("#gotop5").click(function () {
-            TweenMax.to(window, 2, { scrollTo: ".box2", ease: Bounce.easeOut });
-        });
-
-
-        // 返回顶部，绑定gotop1图标和gotop2文字事件
-        $("#gotop1,#gotop2").click(function (e) {
-            TweenMax.to(window, 1.5, { scrollTo: 0, ease: Expo.easeInOut });
-            var huojian = new TimelineLite();
-            huojian.to("#gotop1", 1, { rotationY: 720, scale: 0.6, y: "+=40", ease: Power4.easeOut })
-                .to("#gotop1", 1, { y: -1000, opacity: 0, ease: Power4.easeOut }, 0.6)
-                .to("#gotop1", 1, { y: 0, rotationY: 0, opacity: 1, scale: 1, ease: Expo.easeOut, clearProps: "all" }, "1.4");
-        });
-
-
-        // 以1秒慢快慢的速度滚动顶部
-        $("#gotop3").click(function () {
-            TweenMax.to(window, 1, { scrollTo: 0, ease: Expo.easeInOut });
-        });
-
-        // 以1.5秒快慢快的速度滚动顶部
-        $("#gotop4").click(function () {
-            TweenMax.to(window, 1.5, { scrollTo: 0, ease: SlowMo.ease.config(0.7, 0.7, false) });
-        });
-    });
-
-</script>
+    </script>
 </body>
 </html>
