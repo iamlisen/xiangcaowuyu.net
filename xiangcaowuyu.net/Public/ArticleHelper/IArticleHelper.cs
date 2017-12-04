@@ -12,6 +12,8 @@ namespace xiangcaowuyu.net.Public.ArticleHelper
 
         bool EditArticle(string id);
 
+        bool EditArticle(Article article);
+
         bool DeleteArticle(string id);
 
         List<Article> GetList(int index = -1);

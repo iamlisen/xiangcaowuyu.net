@@ -5,10 +5,34 @@
 }
 <div>
     <h2 style="text-align:center;">@Model.Title</h2>
-    <hr/>
-        
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Raw(@Model.Context)
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px;">
+        <div class="col-md-12">
+            <div style="text-align:center">
+                <a href="@Model.TaoBaoUrl" target="_blank" class="btn btn-success" id="taobaourl">淘宝购买</a> |
+                <a href="@Model.WeiDianUrl" target="_blank" class="btn btn-default" id="weidianurl">微店购买</a>
+                <a asp-action="List" class="btn btn-primary" id="reback">返回列表</a>
+            </div>
+        </div>
+    </div>
+    <input asp-for="ID" type="hidden" id="articleid"/>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+@section Scripts{
+    <script src="~/lib/jquery-enlargement/dist/zoomify.js"></script>
+    <script>
+        $(function () {
+            if ($.cookie("islogin") == "true") {
+                $("#weidianurl").after(" | <a href='/Article/Edit/" + $("#articleid").val() + "'" + " class='btn btn-success'>编辑文章</a> | ");
+            } else {
+                $("#weidianurl").after(" | ");
+            }
+        });
+    </script>
+}

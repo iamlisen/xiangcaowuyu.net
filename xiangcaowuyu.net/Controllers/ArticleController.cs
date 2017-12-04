@@ -62,18 +62,20 @@ namespace xiangcaowuyu.net.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Edit(string id)
         {
-            return View();
+            Article article = articleHelper.GetArticle(id);
+            return View(article);
         }
 
         // POST: Article/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin")]
-        public ActionResult Edit(string id, IFormCollection collection)
+        public ActionResult Edit(string id, Article article)
         {
             try
             {
                 // TODO: Add update logic here
+                articleHelper.EditArticle(article);
                 return RedirectToAction(nameof(Index));
             }
             catch

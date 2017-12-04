@@ -53,6 +53,12 @@ namespace xiangcaowuyu.net.Public.ArticleHelper
             }
         }
 
+        public bool EditArticle(Article article)
+        {
+            sqlDbContext.Update(article);
+            return sqlDbContext.SaveChanges() >= 1 ? true : false;
+        }
+
         /// <summary>
         /// 根据ID获取
         /// </summary>

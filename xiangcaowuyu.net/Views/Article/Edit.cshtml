@@ -1,0 +1,119 @@
+﻿@model xiangcaowuyu.net.Models.Entity.Article
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdd.cshtml";
+}
+<hr />
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ID" />
+    <h2 style="text-align:center;">编辑</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PostTime" class="control-label"></label>
+                    <input asp-for="PostTime" class="form-control" />
+                    <span asp-validation-for="PostTime" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="TaoBaoUrl" class="control-label"></label>
+                    <input asp-for="TaoBaoUrl" class="form-control" />
+                    <span asp-validation-for="TaoBaoUrl" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="WeiDianUrl" class="control-label"></label>
+                    <input asp-for="WeiDianUrl" class="form-control" />
+                    <span asp-validation-for="WeiDianUrl" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label asp-for="Picture" class="control-label"></label>
+                <input asp-for="Picture" class="form-control" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+                <div><input type="file" id="filePicture" style="float:left" /><input type="button" class="btn btn-default" id="btnPicture" value="上传" /></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Context" class="control-label"></label>
+                    <textarea asp-for="Context" class="form-control ckeditor"></textarea>
+                    <span asp-validation-for="Context" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="text-align:center;">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="submit" value="保存" class="btn btn-default" />
+                    <a asp-action="Index" style="margin-left:5px;" class="btn btn-danger">返回</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="form-group" style="display:none;">
+    <label asp-for="IsHot" class="control-label"></label>
+    <input asp-for="IsHot" class="form-control" />
+    <span asp-validation-for="IsHot" class="text-danger"></span>
+</div>
+<div class="form-group" style="display:none;">
+    <label asp-for="Type" class="control-label"></label>
+    <input asp-for="Type" class="form-control" />
+    <span asp-validation-for="Type" class="text-danger"></span>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            //上传照片
+            $("#btnPicture").click(function () {
+                var fileUpload = $("#filePicture").get(0);
+                var files = fileUpload.files;
+                var data = new FormData();
+                data.append(files[0].name, files[0]);
+
+                $.ajax({
+                    url: "/Image/UploadOnlyImage",
+                    type: "post",
+                    data: data,
+                    /**
+                    *必须false才会自动加上正确的Content-Type
+                    */
+                    contentType: false,
+                    /**
+                    * 必须false才会避开jQuery对 formdata 的默认处理
+                    * XMLHttpRequest会对 formdata 进行正确的处理
+                    */
+                    processData: false,
+                    dataType: "json",
+                    success: function (data) {
+                        //var obj = JSON.parse(data);
+                        $("#Picture").val(data.msg);
+                    },
+                    error: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+        });
+    </script>
+}
